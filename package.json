@@ -1,0 +1,9 @@
+{
+  "author": "Simon Repp <simon@fdpl.io>",
+  "dependencies": {
+    "enojs": "^0.10.4",
+    "js-yaml": "^3.12.0"
+  },
+  "name": "benchmarks",
+  "private": true
+}
