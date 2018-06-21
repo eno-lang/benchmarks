@@ -1,13 +1,25 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    enorb (0.4.2)
+    citrus (3.0.2)
+    enorb (0.4.3)
+    parslet (1.8.2)
+    safe_yaml (1.0.4)
+    toml (0.2.0)
+      parslet (~> 1.8.0)
+    toml-rb (1.1.1)
+      citrus (~> 3.0, > 3.0)
+    tomlrb (1.2.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   enorb
+  safe_yaml
+  toml
+  toml-rb
+  tomlrb
 
 BUNDLED WITH
    1.16.1
