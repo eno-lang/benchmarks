@@ -1,0 +1,16 @@
+# python
+
+iterations: 100000
+evaluated: 2018-06-21 16:33:50.242047
+
+## yaml_invoice_example
+
+enopy 0.2.3         :              59.697
+pyyaml 3.12         :             265.422
+ruamel.yaml 0.15.40 :             944.340
+
+## jekyll_post_example
+
+enopy 0.2.3         :              52.929
+pyyaml 3.12         :              95.179
+ruamel.yaml 0.15.40 :             298.640
