@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    enorb (0.4.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  enorb
+
+BUNDLED WITH
+   1.16.1
