@@ -1,19 +1,19 @@
 # javascript
 
-iterations: 10000
-evaluated: Thu Jun 21 2018 15:13:26 GMT+0200 (Central European Summer Time)
+iterations: 100000
+evaluated: Thu Jun 21 2018 15:17:32 GMT+0200 (Central European Summer Time)
 
 # yaml_invoice_example
 
-enojs 0.10.4        : 0.436206264000386
-js-yaml 3.12.0      : 0.30480795799940824
-toml 2.3.3          : 5.728220108000562
-toml-j0.4 1.1.1     : 1.3227686529997735
+enojs 0.10.4        : 3.97504427199997
+js-yaml 3.12.0      : 2.564988780999556
+toml 2.3.3          : 57.518482293000446
+toml-j0.4 1.1.1     : 12.00057264399901
 
 # jekyll_post_example
 
-enojs 0.10.4        : 0.1515514819994569
-front-matter 2.3.0  : 0.08844133999943733
-js-yaml 3.12.0      : 0.09347227600030601
-toml 2.3.3          : 14.625197017000987
-toml-j0.4 1.1.1     : 1.2344947640001773
+enojs 0.10.4        : 1.0864566459991039
+front-matter 2.3.0  : 0.6629992729984224
+js-yaml 3.12.0      : 0.7981426309999079
+toml 2.3.3          : 145.1346653760001
+toml-j0.4 1.1.1     : 11.623284826001152

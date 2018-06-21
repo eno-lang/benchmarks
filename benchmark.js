@@ -13,7 +13,7 @@ const tomlVersion = require('toml/package').version;
 const tomlJ04 = require('toml-j0.4');
 const tomlJ04Version = require('toml-j0.4/package').version;
 
-const ITERATIONS = 10000;
+const ITERATIONS = 100000;
 
 let enoInput, mdInput, tomlInput, yamlInput;
 

@@ -19,7 +19,7 @@ require 'yaml'
 YAML_VERSION = RUBY_VERSION
 
 class RubyReport
-  ITERATIONS = 10000
+  ITERATIONS = 100000
 
   def initialize
     @report = "# ruby\n\niterations: #{ITERATIONS}\nevaluated: #{Time.now}\n"
