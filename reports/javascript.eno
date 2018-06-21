@@ -1,19 +1,19 @@
 # javascript
 
 iterations: 100000
-evaluated: Thu Jun 21 2018 15:17:32 GMT+0200 (Central European Summer Time)
+evaluated: Thu Jun 21 2018 16:09:00 GMT+0200 (Central European Summer Time)
 
-# yaml_invoice_example
+## yaml_invoice_example
 
-enojs 0.10.4        : 3.97504427199997
-js-yaml 3.12.0      : 2.564988780999556
-toml 2.3.3          : 57.518482293000446
-toml-j0.4 1.1.1     : 12.00057264399901
+enojs 0.10.4        :       4.127
+js-yaml 3.12.0      :       2.649
+toml 2.3.3          :      55.079
+toml-j0.4 1.1.1     :      12.402
 
-# jekyll_post_example
+## jekyll_post_example
 
-enojs 0.10.4        : 1.0864566459991039
-front-matter 2.3.0  : 0.6629992729984224
-js-yaml 3.12.0      : 0.7981426309999079
-toml 2.3.3          : 145.1346653760001
-toml-j0.4 1.1.1     : 11.623284826001152
+enojs 0.10.4        :       1.042
+front-matter 2.3.0  :       0.661
+js-yaml 3.12.0      :       0.799
+toml 2.3.3          :     146.472
+toml-j0.4 1.1.1     :      12.106

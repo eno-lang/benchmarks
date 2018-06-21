@@ -1,18 +1,18 @@
 # ruby
 
 iterations: 100000
-evaluated: 2018-06-21 15:21:28 +0200
+evaluated: 2018-06-21 16:15:07 +0200
 
-# yaml_invoice_example
+## yaml_invoice_example
 
-enorb 0.4.3         : 33.626431999999994
-toml-rb 1.1.1       : 531.973098
-tomlrb 1.2.7        : 25.951592000000034
-yaml 2.5.0          : 24.047626000000037
+enorb 0.4.3         :      33.741
+toml-rb 1.1.1       :     551.679
+tomlrb 1.2.7        :      26.479
+yaml 2.5.0          :      24.585
 
-# jekyll_post_example
+## jekyll_post_example
 
-enorb 0.4.3         : 28.927022000000086
-toml-rb 1.1.1       : 157.09956400000004
-tomlrb 1.2.7        : 5.820697000000046
-yaml 2.5.0          : 8.504143000000013
+enorb 0.4.3         :      29.784
+toml-rb 1.1.1       :     164.920
+tomlrb 1.2.7        :       6.245
+yaml 2.5.0          :       8.843

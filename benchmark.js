@@ -19,7 +19,7 @@ let enoInput, mdInput, tomlInput, yamlInput;
 
 let report = `# javascript\n\niterations: ${ITERATIONS}\nevaluated: ${new Date()}\n`;
 
-const scenario = (file) => { report += `\n# ${file}\n\n`; };
+const scenario = (file) => { report += `\n## ${file}\n\n`; };
 
 const benchmark = (library, version, perform) => {
   const before = performance.now();
@@ -29,7 +29,7 @@ const benchmark = (library, version, perform) => {
 
   const after = performance.now();
 
-  report += `${library} ${version}`.padEnd(20) + `: ${(after - before) / 1000.0}\n`;
+  report += `${library} ${version}`.padEnd(20) + ':' + ((after - before) / 1000.0).toFixed(3).padStart(12) + '\n';
 };
 
 

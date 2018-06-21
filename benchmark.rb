@@ -25,6 +25,16 @@ class RubyReport
     @report = "# ruby\n\niterations: #{ITERATIONS}\nevaluated: #{Time.now}\n"
   end
 
+  def benchmark(library, version)
+    result = Benchmark.measure do
+      ITERATIONS.times do
+        yield
+      end
+    end
+
+    @report += "#{library} #{version}".ljust(20) + ':' +  ('%.3f' % result.total).rjust(12) + "\n"
+  end
+
   def generate
     scenario('yaml_invoice_example')
 
@@ -56,17 +66,7 @@ class RubyReport
   end
 
   def scenario(file)
-    @report += "\n# #{file}\n\n"
-  end
-
-  def benchmark(library, version)
-    result = Benchmark.measure do
-      ITERATIONS.times do
-        yield
-      end
-    end
-
-    @report += "#{library} #{version}".ljust(20) + ": #{result.total}\n"
+    @report += "\n## #{file}\n\n"
   end
 end
 
