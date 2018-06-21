@@ -1,0 +1,1 @@
+Post example taken from https://jekyllrb.com/docs/posts/

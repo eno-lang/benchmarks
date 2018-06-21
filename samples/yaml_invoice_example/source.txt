@@ -1,0 +1,1 @@
+Invoice example taken from http://yaml.org/start.html
