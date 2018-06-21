@@ -13,7 +13,7 @@ const tomlVersion = require('toml/package').version;
 const tomlJ04 = require('toml-j0.4');
 const tomlJ04Version = require('toml-j0.4/package').version;
 
-const ITERATIONS = 100000;
+const ITERATIONS = 10000;
 
 let enoInput, mdInput, tomlInput, yamlInput;
 
@@ -29,7 +29,7 @@ const benchmark = (library, version, perform) => {
 
   const after = performance.now();
 
-  report += `${library} ${version}`.padEnd(20) + `: ${after - before}\n`;
+  report += `${library} ${version}`.padEnd(20) + `: ${(after - before) / 1000.0}\n`;
 };
 
 
@@ -50,9 +50,11 @@ scenario('jekyll_post_example');
 const enoPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.eno'), 'utf-8');
 const mdPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.md'), 'utf-8');
 const tomlPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.toml'), 'utf-8');
+const yamlPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.yaml'), 'utf-8');
 
 benchmark('enojs', enoVersion, () => eno.parse(enoPost));
 benchmark('front-matter', fmVersion, () => fm(mdPost));
+benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlPost));
 benchmark('toml', tomlVersion, () => toml.parse(tomlPost));
 benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlPost));
 
