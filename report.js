@@ -62,11 +62,11 @@ for(let scenario of ['yaml_invoice_example', 'jekyll_post_example']) {
 
     let bar = 1 + 320 * (benchmark.time / maxTime);
 
-    if(bar > 80) {
+    if(bar > 79) {
       report += '\n';
       while(bar > 0) {
-        report += barChar.repeat(Math.max(bar, 80)) + '  \n';
-        bar -= 80;
+        report += barChar.repeat(Math.max(bar, 79)) + '  \n';
+        bar -= 79;
       }
 
       report += `${benchmark.time.toFixed(3)} - **${benchmark.library}** - *${benchmark.language}*  \n`;
