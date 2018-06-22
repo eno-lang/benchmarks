@@ -56,7 +56,7 @@ for(let scenario of ['yaml_invoice_example', 'jekyll_post_example']) {
   report += `\n## ${scenario}\n\n`;
 
   for(let benchmark of results[scenario]) {
-    let bar = 320 * (benchmark.time / maxTime);
+    let bar = 1 + 320 * (benchmark.time / maxTime);
 
     if(bar > 80) {
       report += '\n';
@@ -66,7 +66,11 @@ for(let scenario of ['yaml_invoice_example', 'jekyll_post_example']) {
       }
     }
 
-    report += `${'█'.repeat(bar)}&nbsp;&nbsp;${benchmark.time.toFixed(3)} - **${benchmark.library}** - *${benchmark.language}*  \n`;
+    if(benchmark.library.includes('eno')) {
+      report += `<span style="color: cyan;">${'█'.repeat(bar)}&nbsp;&nbsp;${benchmark.time.toFixed(3)} - **${benchmark.library}** - *${benchmark.language}*</span>  \n`;
+    } else {
+      report += `${'█'.repeat(bar)}&nbsp;&nbsp;${benchmark.time.toFixed(3)} - **${benchmark.library}** - *${benchmark.language}*  \n`;
+    }
   }
 }
 
