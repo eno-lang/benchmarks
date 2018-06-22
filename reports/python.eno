@@ -1,16 +1,34 @@
 # python
 
 iterations: 100000
-evaluated: 2018-06-21 16:33:50.242047
+evaluated: 2018-06-22 16:19:23.602171
 
-## yaml_invoice_example
+## abstract_hierarchy
 
-enopy 0.2.3         :              59.697
-pyyaml 3.12         :             265.422
-ruamel.yaml 0.15.40 :             944.340
+enopy 0.2.3         :      31.692
+pyyaml 3.12         :     191.298
+ruamel.yaml 0.15.40 :     651.258
+
+## invented_server_configuration
+
+enopy 0.2.3         :      32.718
+pyyaml 3.12         :     187.192
+ruamel.yaml 0.15.40 :     645.989
 
 ## jekyll_post_example
 
-enopy 0.2.3         :              52.929
-pyyaml 3.12         :              95.179
-ruamel.yaml 0.15.40 :             298.640
+enopy 0.2.3         :      52.146
+pyyaml 3.12         :      96.941
+ruamel.yaml 0.15.40 :     299.217
+
+## journey_route_data
+
+enopy 0.2.3         :      98.601
+pyyaml 3.12         :     378.732
+ruamel.yaml 0.15.40 :    1300.474
+
+## yaml_invoice_example
+
+enopy 0.2.3         :      60.515
+pyyaml 3.12         :     270.663
+ruamel.yaml 0.15.40 :     960.438
