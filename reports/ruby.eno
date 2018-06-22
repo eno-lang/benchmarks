@@ -1,18 +1,42 @@
 # ruby
 
 iterations: 100000
-evaluated: 2018-06-21 16:15:07 +0200
+evaluated: 2018-06-22 14:40:02 +0200
 
-## yaml_invoice_example
+## abstract_hierarchy
 
-enorb 0.4.3         :      33.741
-toml-rb 1.1.1       :     551.679
-tomlrb 1.2.7        :      26.479
-yaml 2.5.0          :      24.585
+enorb 0.4.3         :      18.406
+toml 0.2.0          :     425.575
+toml-rb 1.1.1       :     281.379
+tomlrb 1.2.7        :      19.014
+yaml 2.5.0          :      13.845
+
+## invented_server_configuration
+
+enorb 0.4.3         :      18.344
+toml 0.2.0          :     734.270
+toml-rb 1.1.1       :     482.646
+tomlrb 1.2.7        :      31.088
+yaml 2.5.0          :      13.515
 
 ## jekyll_post_example
 
-enorb 0.4.3         :      29.784
-toml-rb 1.1.1       :     164.920
-tomlrb 1.2.7        :       6.245
-yaml 2.5.0          :       8.843
+enorb 0.4.3         :      28.006
+toml-rb 1.1.1       :     157.389
+tomlrb 1.2.7        :       5.781
+yaml 2.5.0          :       8.386
+
+## journey_route_data
+
+enorb 0.4.3         :      45.618
+toml 0.2.0          :     916.287
+toml-rb 1.1.1       :     513.578
+tomlrb 1.2.7        :      30.598
+yaml 2.5.0          :      31.159
+
+## yaml_invoice_example
+
+enorb 0.4.3         :      31.299
+toml-rb 1.1.1       :     533.380
+tomlrb 1.2.7        :      25.589
+yaml 2.5.0          :      23.043
