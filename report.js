@@ -46,31 +46,34 @@ results['yaml_invoice_example'] = results['yaml_invoice_example'].sort((a, b) =>
 let report = '# Benchmarks\n';
 
 report += `
-**Heads up: This is an initial draft report, as with all statistics please take it with a big grain of salt.**
+This is an initial draft report, and as with all statistics please take it with a big grain of salt.
 
 To get an impression how the measurements were obtained, please take a look at the source of \`benchmark.js/py/rb\` inside this repository.
 To get an impression how the report was compiled, please study \`report.js\` inside this repository.
+
+Numerical values represent the number of seconds elapsed during 100.000 iterations of the respective code example, or in other words, smaller numbers indicated better performance.
 `;
 
 for(let scenario of ['yaml_invoice_example', 'jekyll_post_example']) {
   report += `\n## ${scenario}\n\n`;
 
   for(let benchmark of results[scenario]) {
+    const barChar = benchmark.library.includes('eno') ? '█' : '▒';
+
     let bar = 1 + 320 * (benchmark.time / maxTime);
 
     if(bar > 80) {
       report += '\n';
-      while(bar > 80) {
-        report += '█'.repeat(80) + '  \n';
+      while(bar > 0) {
+        report += barChar.repeat(Math.max(bar, 80)) + '  \n';
         bar -= 80;
       }
+
+      report += `${benchmark.time.toFixed(3)} - **${benchmark.library}** - *${benchmark.language}*  \n`;
+    } else {
+      report += `${barChar.repeat(bar)}&nbsp;&nbsp;${benchmark.time.toFixed(3)} - **${benchmark.library}** - *${benchmark.language}*  \n`;
     }
 
-    if(benchmark.library.includes('eno')) {
-      report += `<span style="color: cyan;">${'█'.repeat(bar)}&nbsp;&nbsp;${benchmark.time.toFixed(3)} - **${benchmark.library}** - *${benchmark.language}*</span>  \n`;
-    } else {
-      report += `${'█'.repeat(bar)}&nbsp;&nbsp;${benchmark.time.toFixed(3)} - **${benchmark.library}** - *${benchmark.language}*  \n`;
-    }
   }
 }
 
