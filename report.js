@@ -57,7 +57,7 @@ This is an initial draft report, and as with all statistics please take it with 
 To get an impression how the measurements were obtained, please take a look at the source of \`benchmark.js/py/rb\` inside this repository.
 To get an impression how the report was compiled, please study \`report.js\` inside this repository.
 
-Numerical values represent the number of seconds elapsed during 100.000 (\*) iterations of the respective code example, or in other words, smaller numbers indicated better performance.
+Numerical values represent the number of seconds elapsed during 100.000 (\*) iterations of the respective code example, or in other words, smaller numbers indicate better performance.
 
 (\*) Note: Some libraries included in the benchmark exhibit an up to 500x slower performance speed compared to the top ranking parsers, these have been partially sampled only at 10.000 iterations with the total duration extrapolated for the global comparison again.
 `;
