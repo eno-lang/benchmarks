@@ -33,16 +33,28 @@ const benchmark = (library, version, perform) => {
 };
 
 
-scenario('yaml_invoice_example');
+scenario('abstract_hierarchy');
 
-const enoInvoice = fs.readFileSync(path.join(__dirname, 'samples/yaml_invoice_example/invoice.eno'), 'utf-8');
-const yamlInvoice = fs.readFileSync(path.join(__dirname, 'samples/yaml_invoice_example/invoice.yaml'), 'utf-8');
-const tomlInvoice = fs.readFileSync(path.join(__dirname, 'samples/yaml_invoice_example/invoice.toml'), 'utf-8');
+const enoHierarchy = fs.readFileSync(path.join(__dirname, 'samples/abstract_hierarchy/hierarchy.eno'), 'utf-8');
+const yamlHierarchy = fs.readFileSync(path.join(__dirname, 'samples/abstract_hierarchy/hierarchy.yaml'), 'utf-8');
+const tomlHierarchy = fs.readFileSync(path.join(__dirname, 'samples/abstract_hierarchy/hierarchy.toml'), 'utf-8');
 
-benchmark('enojs', enoVersion, () => eno.parse(enoInvoice));
-benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlInvoice));
-benchmark('toml', tomlVersion, () => toml.parse(tomlInvoice));
-benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlInvoice));
+benchmark('enojs', enoVersion, () => eno.parse(enoHierarchy));
+benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlHierarchy));
+benchmark('toml', tomlVersion, () => toml.parse(tomlHierarchy));
+benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlHierarchy));
+
+
+scenario('invented_server_configuration');
+
+const enoConfiguration = fs.readFileSync(path.join(__dirname, 'samples/invented_server_configuration/configuration.eno'), 'utf-8');
+const yamlConfiguration = fs.readFileSync(path.join(__dirname, 'samples/invented_server_configuration/configuration.yaml'), 'utf-8');
+const tomlConfiguration = fs.readFileSync(path.join(__dirname, 'samples/invented_server_configuration/configuration.toml'), 'utf-8');
+
+benchmark('enojs', enoVersion, () => eno.parse(enoConfiguration));
+benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlConfiguration));
+benchmark('toml', tomlVersion, () => toml.parse(tomlConfiguration));
+benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlConfiguration));
 
 
 scenario('jekyll_post_example');
@@ -57,6 +69,30 @@ benchmark('front-matter', fmVersion, () => fm(mdPost));
 benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlPost));
 benchmark('toml', tomlVersion, () => toml.parse(tomlPost));
 benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlPost));
+
+
+scenario('journey_route_data');
+
+const enoJourney = fs.readFileSync(path.join(__dirname, 'samples/journey_route_data/journey.eno'), 'utf-8');
+const yamlJourney = fs.readFileSync(path.join(__dirname, 'samples/journey_route_data/journey.yaml'), 'utf-8');
+const tomlJourney = fs.readFileSync(path.join(__dirname, 'samples/journey_route_data/journey.toml'), 'utf-8');
+
+benchmark('enojs', enoVersion, () => eno.parse(enoJourney));
+benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlJourney));
+benchmark('toml', tomlVersion, () => toml.parse(tomlJourney));
+benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlJourney));
+
+
+scenario('yaml_invoice_example');
+
+const enoInvoice = fs.readFileSync(path.join(__dirname, 'samples/yaml_invoice_example/invoice.eno'), 'utf-8');
+const yamlInvoice = fs.readFileSync(path.join(__dirname, 'samples/yaml_invoice_example/invoice.yaml'), 'utf-8');
+const tomlInvoice = fs.readFileSync(path.join(__dirname, 'samples/yaml_invoice_example/invoice.toml'), 'utf-8');
+
+benchmark('enojs', enoVersion, () => eno.parse(enoInvoice));
+benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlInvoice));
+benchmark('toml', tomlVersion, () => toml.parse(tomlInvoice));
+benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlInvoice));
 
 
 fs.writeFileSync(path.join(__dirname, 'reports/javascript.eno'), report);

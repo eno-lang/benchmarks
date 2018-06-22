@@ -1,19 +1,40 @@
 # javascript
 
 iterations: 100000
-evaluated: Thu Jun 21 2018 16:09:00 GMT+0200 (Central European Summer Time)
+evaluated: Fri Jun 22 2018 14:26:31 GMT+0200 (Central European Summer Time)
 
-## yaml_invoice_example
+## abstract_hierarchy
 
-enojs 0.10.4        :       4.127
-js-yaml 3.12.0      :       2.649
-toml 2.3.3          :      55.079
-toml-j0.4 1.1.1     :      12.402
+enojs 0.10.4        :       1.668
+js-yaml 3.12.0      :       1.691
+toml 2.3.3          :      64.250
+toml-j0.4 1.1.1     :       6.495
+
+## invented_server_configuration
+
+enojs 0.10.4        :       2.334
+js-yaml 3.12.0      :       1.726
+toml 2.3.3          :     100.743
+toml-j0.4 1.1.1     :       9.961
 
 ## jekyll_post_example
 
-enojs 0.10.4        :       1.042
-front-matter 2.3.0  :       0.661
-js-yaml 3.12.0      :       0.799
-toml 2.3.3          :     146.472
-toml-j0.4 1.1.1     :      12.106
+enojs 0.10.4        :       1.103
+front-matter 2.3.0  :       0.696
+js-yaml 3.12.0      :       0.876
+toml 2.3.3          :     147.371
+toml-j0.4 1.1.1     :      11.916
+
+## journey_route_data
+
+enojs 0.10.4        :       3.801
+js-yaml 3.12.0      :       3.758
+toml 2.3.3          :     102.543
+toml-j0.4 1.1.1     :      15.813
+
+## yaml_invoice_example
+
+enojs 0.10.4        :       4.156
+js-yaml 3.12.0      :       2.692
+toml 2.3.3          :      57.210
+toml-j0.4 1.1.1     :      12.422

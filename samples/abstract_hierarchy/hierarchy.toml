@@ -1,0 +1,24 @@
+[doc]
+colors = [
+  "blue",
+  "green",
+  "orange",
+  "red"
+]
+things = [
+  "boxes",
+  "canes",
+  "pyramids",
+  "cubes"
+]
+[doc.traits]
+tired = "somewhat"
+extroverted = "sometimes"
+funny = "always"
+inventive = "occasionally"
+[doc.deep]
+sea = "blue"
+[doc.deep.deep]
+sea = "darkblue"
+[doc.deep.deep.deep]
+sea = "black"
