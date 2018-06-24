@@ -37,9 +37,9 @@ const benchmark = (library, version, perform, iteration_cutback_factor = 1) => {
   report += `${library} ${version}: ${durationNormalized}\n`;
 
   if(iteration_cutback_factor > 1) {
-    console.log(`\x1b[33m${library} - ${iterations / 1000}k iterations => ${duration} seconds\x1b[0m`);
+    console.log(`\x1b[33m${library} - ${iterations / 1000}k iterations => ${duration} seconds / ${durationNormalized} normalized seconds\x1b[0m`);
   } else {
-    console.log(`${library} - ${iterations / 1000}k iterations => ${duration} seconds`);
+    console.log(`${library} - ${iterations / 1000}k iterations => ${duration} seconds / ${durationNormalized} normalized seconds`);
   }
 };
 
