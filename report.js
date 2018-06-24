@@ -5,6 +5,7 @@ const path = require('path');
 
 const results = {
   abstract_hierarchy: [],
+  content_heavy: [],
   invented_server_configuration: [],
   jekyll_post_example: [],
   journey_route_data: [],
@@ -26,7 +27,7 @@ for(language of ['javascript', 'python', 'ruby']) {
     previousIterations = iterations;
   }
 
-  for(let scenario of ['abstract_hierarchy', 'invented_server_configuration', 'jekyll_post_example', 'journey_route_data', 'yaml_invoice_example']) {
+  for(let scenario of Object.keys(results)) {
     const section = body.section(scenario);
 
     for(let benchmark of section.elements()) {
@@ -40,14 +41,10 @@ for(language of ['javascript', 'python', 'ruby']) {
 
       maxTime = Math.max(maxTime, time);
     }
+
+    results[scenario] = results[scenario].sort((a, b) => a.time - b.time);
   }
 }
-
-results['abstract_hierarchy'] = results['abstract_hierarchy'].sort((a, b) => a.time - b.time);
-results['invented_server_configuration'] = results['invented_server_configuration'].sort((a, b) => a.time - b.time);
-results['jekyll_post_example'] = results['jekyll_post_example'].sort((a, b) => a.time - b.time);
-results['journey_route_data'] = results['journey_route_data'].sort((a, b) => a.time - b.time);
-results['yaml_invoice_example'] = results['yaml_invoice_example'].sort((a, b) => a.time - b.time);
 
 let report = '# Benchmarks\n';
 
@@ -57,12 +54,12 @@ This is an initial draft report, and as with all statistics please take it with 
 To get an impression how the measurements were obtained, please take a look at the source of \`benchmark.js/py/rb\` inside this repository.
 To get an impression how the report was compiled, please study \`report.js\` inside this repository.
 
-Numerical values represent the number of seconds elapsed during 100.000 (\*) iterations of the respective code example, or in other words, smaller numbers indicate better performance.
+Numerical values represent the number of seconds elapsed during 100k (\*) iterations of the respective code example, or in other words, smaller numbers indicate better performance.
 
-(\*) Note: Some libraries included in the benchmark exhibit an up to 500x slower performance speed compared to the top ranking parsers, these have been partially sampled only at 10.000 iterations with the total duration extrapolated for the global comparison again.
+(\*) Note: Some libraries included in the benchmark exhibit an up to 1000x slower performance speed compared to the top ranking parsers, these have been partially sampled with up to only 1k iterations with the total duration extrapolated for the global comparison again.
 `;
 
-for(let scenario of ['abstract_hierarchy', 'invented_server_configuration', 'jekyll_post_example', 'journey_route_data', 'yaml_invoice_example']) {
+for(let scenario of Object.keys(results)) {
   report += `\n## ${scenario}\n\n`;
 
   for(let benchmark of results[scenario]) {
