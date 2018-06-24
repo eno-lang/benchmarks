@@ -4,8 +4,6 @@ const { performance } = require('perf_hooks');
 
 const eno = require('enojs');
 const enoVersion = require('enojs/package').version;
-const fm = require('front-matter');
-const fmVersion = require('front-matter/package').version;
 const jsYaml = require('js-yaml');
 const jsYamlVersion = require('js-yaml/package').version;
 const toml = require('toml');
@@ -19,17 +17,30 @@ let enoInput, mdInput, tomlInput, yamlInput;
 
 let report = `# javascript\n\niterations: ${ITERATIONS}\nevaluated: ${new Date()}\n`;
 
-const scenario = (file) => { report += `\n## ${file}\n\n`; };
+const scenario = (file) => {
+  report += `\n## ${file}\n\n`;
 
-const benchmark = (library, version, perform) => {
+  console.log(file);
+};
+
+const benchmark = (library, version, perform, iteration_cutback_factor = 1) => {
+  const iterations = ITERATIONS / iteration_cutback_factor;
+
   const before = performance.now();
-
-  for(let i = 0; i < ITERATIONS; i++)
+  for(let i = 0; i < iterations; i++)
     perform();
-
   const after = performance.now();
 
-  report += `${library} ${version}`.padEnd(20) + ':' + ((after - before) / 1000.0).toFixed(3).padStart(12) + '\n';
+  const duration = ((after - before) / 1000.0);
+  const durationNormalized = duration * iteration_cutback_factor;
+
+  report += `${library} ${version}: ${durationNormalized}\n`;
+
+  if(iteration_cutback_factor > 1) {
+    console.log(`\x1b[33m${library} - ${iterations / 1000}k iterations => ${duration} seconds\x1b[0m`);
+  } else {
+    console.log(`${library} - ${iterations / 1000}k iterations => ${duration} seconds`);
+  }
 };
 
 
@@ -41,8 +52,20 @@ const tomlHierarchy = fs.readFileSync(path.join(__dirname, 'samples/abstract_hie
 
 benchmark('enojs', enoVersion, () => eno.parse(enoHierarchy));
 benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlHierarchy));
-benchmark('toml', tomlVersion, () => toml.parse(tomlHierarchy));
+benchmark('toml', tomlVersion, () => toml.parse(tomlHierarchy), 10);
 benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlHierarchy));
+
+
+scenario('content_heavy');
+
+const enoContent = fs.readFileSync(path.join(__dirname, 'samples/content_heavy/content.eno'), 'utf-8');
+const yamlContent = fs.readFileSync(path.join(__dirname, 'samples/content_heavy/content.yaml'), 'utf-8');
+const tomlContent = fs.readFileSync(path.join(__dirname, 'samples/content_heavy/content.toml'), 'utf-8');
+
+benchmark('enojs', enoVersion, () => eno.parse(enoContent));
+benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlContent));
+benchmark('toml', tomlVersion, () => toml.parse(tomlContent), 100);
+benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlContent), 10);
 
 
 scenario('invented_server_configuration');
@@ -53,7 +76,7 @@ const tomlConfiguration = fs.readFileSync(path.join(__dirname, 'samples/invented
 
 benchmark('enojs', enoVersion, () => eno.parse(enoConfiguration));
 benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlConfiguration));
-benchmark('toml', tomlVersion, () => toml.parse(tomlConfiguration));
+benchmark('toml', tomlVersion, () => toml.parse(tomlConfiguration), 10);
 benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlConfiguration));
 
 
@@ -64,9 +87,8 @@ const tomlPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_examp
 const yamlPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.yaml'), 'utf-8');
 
 benchmark('enojs', enoVersion, () => eno.parse(enoPost));
-benchmark('front-matter', fmVersion, () => fm(mdPost));
 benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlPost));
-benchmark('toml', tomlVersion, () => toml.parse(tomlPost));
+benchmark('toml', tomlVersion, () => toml.parse(tomlPost), 10);
 benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlPost));
 
 
@@ -78,7 +100,7 @@ const tomlJourney = fs.readFileSync(path.join(__dirname, 'samples/journey_route_
 
 benchmark('enojs', enoVersion, () => eno.parse(enoJourney));
 benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlJourney));
-benchmark('toml', tomlVersion, () => toml.parse(tomlJourney));
+benchmark('toml', tomlVersion, () => toml.parse(tomlJourney), 10);
 benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlJourney));
 
 
