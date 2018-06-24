@@ -3,9 +3,6 @@ require 'benchmark'
 require 'enorb'
 ENORB_VERSION = Gem.loaded_specs['enorb'].version
 
-# require 'safe_yaml/load' ERRORS
-# SAFE_YAML_VERSION = Gem.loaded_specs['safe_yaml'].version
-
 require 'toml'
 TOML_VERSION = Gem.loaded_specs['toml'].version
 
@@ -43,7 +40,6 @@ class RubyReport
     yaml_hierarchy = File.read('samples/abstract_hierarchy/hierarchy.yaml')
 
     benchmark('enorb', ENORB_VERSION) { Eno.parse(eno_hierarchy) }
-    # benchmark('safe_yaml', SAFE_YAML_VERSION) { SafeYAML.load(yaml_hierarchy) }
     benchmark('toml', TOML_VERSION) { TOML.load(toml_hierarchy) }
     benchmark('toml-rb', TOML_RB_VERSION) { TomlRB.parse(toml_hierarchy) }
     benchmark('tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_hierarchy) }
@@ -57,7 +53,6 @@ class RubyReport
     yaml_configuration = File.read('samples/invented_server_configuration/configuration.yaml')
 
     benchmark('enorb', ENORB_VERSION) { Eno.parse(eno_configuration) }
-    # benchmark('safe_yaml', SAFE_YAML_VERSION) { SafeYAML.load(yaml_configuration) }
     benchmark('toml', TOML_VERSION) { TOML.load(toml_configuration) }
     benchmark('toml-rb', TOML_RB_VERSION) { TomlRB.parse(toml_configuration) }
     benchmark('tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_configuration) }
@@ -71,7 +66,6 @@ class RubyReport
     yaml_post = File.read('samples/jekyll_post_example/post.yaml')
 
     benchmark('enorb', ENORB_VERSION) { Eno.parse(eno_post) }
-    # benchmark('safe_yaml', SAFE_YAML_VERSION) { SafeYAML.load(yaml_post) }
     # benchmark('toml', TOML_VERSION) { TOML.load(toml_post) } ERRORS
     benchmark('toml-rb', TOML_RB_VERSION) { TomlRB.parse(toml_post) }
     benchmark('tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_post) }
@@ -85,7 +79,6 @@ class RubyReport
     yaml_journey = File.read('samples/journey_route_data/journey.yaml')
 
     benchmark('enorb', ENORB_VERSION) { Eno.parse(eno_journey) }
-    # benchmark('safe_yaml', SAFE_YAML_VERSION) { SafeYAML.load(yaml_journey) }
     benchmark('toml', TOML_VERSION) { TOML.load(toml_journey) }
     benchmark('toml-rb', TOML_RB_VERSION) { TomlRB.parse(toml_journey) }
     benchmark('tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_journey) }
@@ -99,7 +92,6 @@ class RubyReport
     yaml_invoice = File.read('samples/yaml_invoice_example/invoice.yaml')
 
     benchmark('enorb', ENORB_VERSION) { Eno.parse(eno_invoice) }
-    # benchmark('safe_yaml', SAFE_YAML_VERSION) { SafeYAML.load(yaml_invoice) }
     # benchmark('toml', TOML_VERSION) { TOML.load(toml_invoice) }
     benchmark('toml-rb', TOML_RB_VERSION) { TomlRB.parse(toml_invoice) }
     benchmark('tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_invoice) }

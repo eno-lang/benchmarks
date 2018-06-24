@@ -4,7 +4,6 @@ GEM
     citrus (3.0.2)
     enorb (0.4.3)
     parslet (1.8.2)
-    safe_yaml (1.0.4)
     toml (0.2.0)
       parslet (~> 1.8.0)
     toml-rb (1.1.1)
@@ -16,7 +15,6 @@ PLATFORMS
 
 DEPENDENCIES
   enorb
-  safe_yaml
   toml
   toml-rb
   tomlrb
