@@ -60,7 +60,6 @@ benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlConfiguration));
 scenario('jekyll_post_example');
 
 const enoPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.eno'), 'utf-8');
-const mdPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.md'), 'utf-8');
 const tomlPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.toml'), 'utf-8');
 const yamlPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.yaml'), 'utf-8');
 
