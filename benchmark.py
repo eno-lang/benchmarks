@@ -83,7 +83,7 @@ class PythonReport:
     with open('samples/journey_route_data/journey.yaml') as file:
       yaml_journey = file.read()
 
-    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_journey), 10)
+    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_journey))
     self.benchmark('pyyaml', PYYAML_VERSION, lambda: yaml.load(yaml_journey), 10)
     self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_journey), 100)
 
@@ -124,9 +124,9 @@ class PythonReport:
     self.report += f"{library} {version}: {duration_normalized}\n"
 
     if iteration_cutback_factor > 1:
-      print(f"\x1b[33m{library} - {iterations / 1000}k iterations => {duration} seconds / {duration_normalized} normalized seconds\x1b[0m")
+      print(f"\x1b[33m{library} - {int(iterations/1000)}k iterations => {duration} seconds / {duration_normalized} normalized seconds\x1b[0m")
     else:
-      print(f"{library} - {iterations / 1000}k iterations => {duration} seconds / {duration_normalized} normalized seconds")
+      print(f"{library} - {int(iterations/1000)}k iterations => {duration} seconds / {duration_normalized} normalized seconds")
 
 report = PythonReport()
 report.generate()
