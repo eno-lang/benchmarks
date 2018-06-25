@@ -41,7 +41,7 @@ class PythonReport:
     with open('samples/content_heavy/content.yaml') as file:
       yaml_content = file.read()
 
-    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_content), 100)
+    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_content))
     self.benchmark('pyyaml', PYYAML_VERSION, lambda: yaml.load(yaml_content), 100)
     self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_content), 100)
 
@@ -97,7 +97,7 @@ class PythonReport:
     with open('samples/yaml_invoice_example/invoice.yaml') as file:
       yaml_invoice = file.read()
 
-    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_invoice), 10)
+    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_invoice))
     self.benchmark('pyyaml', PYYAML_VERSION, lambda: yaml.load(yaml_invoice), 10)
     self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_invoice), 100)
 
@@ -118,7 +118,7 @@ class PythonReport:
       perform()
     after = time.clock()
 
-    duration = (after - before)
+    duration = after - before
     duration_normalized = (after - before) * iteration_cutback_factor
 
     self.report += f"{library} {version}: {duration_normalized}\n"
