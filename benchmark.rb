@@ -61,7 +61,7 @@ class RubyReport
     toml_content = File.read('samples/content_heavy/content.toml')
     yaml_content = File.read('samples/content_heavy/content.yaml')
 
-    benchmark('enorb', ENORB_VERSION, 10) { Eno.parse(eno_content) }
+    benchmark('enorb', ENORB_VERSION) { Eno.parse(eno_content) }
     # benchmark('toml', TOML_VERSION, 100) { TOML.load(toml_content) } ERRORS
     benchmark('toml-rb', TOML_RB_VERSION, 100) { TomlRB.parse(toml_content) }
     benchmark('tomlrb', TOMLRB_VERSION, 10) { Tomlrb.parse(toml_content) }
