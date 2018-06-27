@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     citrus (3.0.2)
-    enorb (0.4.5)
+    enorb (0.4.6)
     parslet (1.8.2)
     toml (0.2.0)
       parslet (~> 1.8.0)

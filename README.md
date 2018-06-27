@@ -14,30 +14,30 @@ Numerical values represent the number of seconds elapsed during 100k (*) iterati
 ░&nbsp;&nbsp;1.653 - **js-yaml 3.12.0** - *javascript*  
 ▓&nbsp;&nbsp;1.662 - **enojs 0.10.5** - *javascript*  
 ░&nbsp;&nbsp;6.267 - **toml-j0.4 1.1.1** - *javascript*  
-▓&nbsp;&nbsp;12.502 - **enorb 0.4.5** - *ruby*  
-░&nbsp;&nbsp;13.860 - **yaml 2.5.0** - *ruby*  
-░&nbsp;&nbsp;18.194 - **tomlrb 1.2.7** - *ruby*  
+▓&nbsp;&nbsp;12.157 - **enorb 0.4.6** - *ruby*  
+░&nbsp;&nbsp;13.722 - **yaml 2.5.0** - *ruby*  
+░&nbsp;&nbsp;18.082 - **tomlrb 1.2.7** - *ruby*  
 ▓&nbsp;&nbsp;20.462 - **enopy 0.2.7** - *python*  
 ░░░&nbsp;&nbsp;65.040 - **toml 2.3.3** - *javascript*  
 ░░░░░░░░&nbsp;&nbsp;185.088 - **pyyaml 3.12** - *python*  
-░░░░░░░░░░░&nbsp;&nbsp;269.123 - **toml-rb 1.1.1** - *ruby*  
-░░░░░░░░░░░░░░░░░&nbsp;&nbsp;420.945 - **toml 0.2.0** - *ruby*  
+░░░░░░░░░░░░&nbsp;&nbsp;275.604 - **toml-rb 1.1.1** - *ruby*  
+░░░░░░░░░░░░░░░░░&nbsp;&nbsp;415.206 - **toml 0.2.0** - *ruby*  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;631.886 - **ruamel.yaml 0.15.40** - *python*  
 
 ## content_heavy
 
 ▓&nbsp;&nbsp;6.437 - **enojs 0.10.5** - *javascript*  
 ░&nbsp;&nbsp;7.095 - **js-yaml 3.12.0** - *javascript*  
+▓&nbsp;&nbsp;9.947 - **enorb 0.4.6** - *ruby*  
 ▓&nbsp;&nbsp;11.640 - **enopy 0.2.7** - *python*  
-░&nbsp;&nbsp;14.602 - **yaml 2.5.0** - *ruby*  
-░&nbsp;&nbsp;15.269 - **tomlrb 1.2.7** - *ruby*  
-▓▓&nbsp;&nbsp;27.824 - **enorb 0.4.5** - *ruby*  
+░&nbsp;&nbsp;14.670 - **yaml 2.5.0** - *ruby*  
+░&nbsp;&nbsp;15.177 - **tomlrb 1.2.7** - *ruby*  
 ░░░░░░░░░░░░░&nbsp;&nbsp;318.403 - **toml-j0.4 1.1.1** - *javascript*  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;1299.363 - **pyyaml 3.12** - *python*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
-░░░░░░░░░░░░  
-2257.717 - **toml-rb 1.1.1** - *ruby*  
+░░░░░░░░░░░░░░  
+2309.812 - **toml-rb 1.1.1** - *ruby*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
@@ -55,28 +55,28 @@ Numerical values represent the number of seconds elapsed during 100k (*) iterati
 ░&nbsp;&nbsp;1.639 - **js-yaml 3.12.0** - *javascript*  
 ▓&nbsp;&nbsp;2.411 - **enojs 0.10.5** - *javascript*  
 ░&nbsp;&nbsp;9.986 - **toml-j0.4 1.1.1** - *javascript*  
-▓&nbsp;&nbsp;14.010 - **enorb 0.4.5** - *ruby*  
-░&nbsp;&nbsp;14.094 - **yaml 2.5.0** - *ruby*  
+▓&nbsp;&nbsp;13.780 - **enorb 0.4.6** - *ruby*  
+░&nbsp;&nbsp;14.024 - **yaml 2.5.0** - *ruby*  
 ▓&nbsp;&nbsp;23.170 - **enopy 0.2.7** - *python*  
-░░&nbsp;&nbsp;31.530 - **tomlrb 1.2.7** - *ruby*  
+░░&nbsp;&nbsp;31.269 - **tomlrb 1.2.7** - *ruby*  
 ░░░░&nbsp;&nbsp;98.842 - **toml 2.3.3** - *javascript*  
 ░░░░░░░░&nbsp;&nbsp;183.791 - **pyyaml 3.12** - *python*  
-░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;486.192 - **toml-rb 1.1.1** - *ruby*  
+░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;490.898 - **toml-rb 1.1.1** - *ruby*  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;634.922 - **ruamel.yaml 0.15.40** - *python*  
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;729.333 - **toml 0.2.0** - *ruby*  
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;713.324 - **toml 0.2.0** - *ruby*  
 
 ## jekyll_post_example
 
 ░&nbsp;&nbsp;0.836 - **js-yaml 3.12.0** - *javascript*  
 ▓&nbsp;&nbsp;0.890 - **enojs 0.10.5** - *javascript*  
-░&nbsp;&nbsp;5.833 - **tomlrb 1.2.7** - *ruby*  
-▓&nbsp;&nbsp;6.318 - **enorb 0.4.5** - *ruby*  
+░&nbsp;&nbsp;6.008 - **tomlrb 1.2.7** - *ruby*  
 ▓&nbsp;&nbsp;7.254 - **enopy 0.2.7** - *python*  
-░&nbsp;&nbsp;8.344 - **yaml 2.5.0** - *ruby*  
+▓&nbsp;&nbsp;7.308 - **enorb 0.4.6** - *ruby*  
+░&nbsp;&nbsp;8.766 - **yaml 2.5.0** - *ruby*  
 ░&nbsp;&nbsp;11.639 - **toml-j0.4 1.1.1** - *javascript*  
 ░░░░&nbsp;&nbsp;95.336 - **pyyaml 3.12** - *python*  
 ░░░░░░░&nbsp;&nbsp;151.942 - **toml 2.3.3** - *javascript*  
-░░░░░░░&nbsp;&nbsp;157.598 - **toml-rb 1.1.1** - *ruby*  
+░░░░░░░&nbsp;&nbsp;169.486 - **toml-rb 1.1.1** - *ruby*  
 ░░░░░░░░░░░░&nbsp;&nbsp;291.521 - **ruamel.yaml 0.15.40** - *python*  
 
 ## journey_route_data
@@ -84,14 +84,14 @@ Numerical values represent the number of seconds elapsed during 100k (*) iterati
 ░&nbsp;&nbsp;3.540 - **js-yaml 3.12.0** - *javascript*  
 ▓&nbsp;&nbsp;3.583 - **enojs 0.10.5** - *javascript*  
 ░&nbsp;&nbsp;15.632 - **toml-j0.4 1.1.1** - *javascript*  
-▓&nbsp;&nbsp;21.082 - **enorb 0.4.5** - *ruby*  
-░░&nbsp;&nbsp;31.621 - **tomlrb 1.2.7** - *ruby*  
-░░&nbsp;&nbsp;32.422 - **yaml 2.5.0** - *ruby*  
+▓&nbsp;&nbsp;20.397 - **enorb 0.4.6** - *ruby*  
+░░&nbsp;&nbsp;33.253 - **tomlrb 1.2.7** - *ruby*  
+░░&nbsp;&nbsp;33.872 - **yaml 2.5.0** - *ruby*  
 ▓▓&nbsp;&nbsp;36.553 - **enopy 0.2.7** - *python*  
 ░░░░░&nbsp;&nbsp;100.486 - **toml 2.3.3** - *javascript*  
 ░░░░░░░░░░░░░░░░&nbsp;&nbsp;376.583 - **pyyaml 3.12** - *python*  
-░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;518.126 - **toml-rb 1.1.1** - *ruby*  
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;960.871 - **toml 0.2.0** - *ruby*  
+░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;540.481 - **toml-rb 1.1.1** - *ruby*  
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;946.237 - **toml 0.2.0** - *ruby*  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;1281.363 - **ruamel.yaml 0.15.40** - *python*  
 
 ## yaml_invoice_example
@@ -99,11 +99,11 @@ Numerical values represent the number of seconds elapsed during 100k (*) iterati
 ░&nbsp;&nbsp;2.798 - **js-yaml 3.12.0** - *javascript*  
 ▓&nbsp;&nbsp;4.407 - **enojs 0.10.5** - *javascript*  
 ░&nbsp;&nbsp;12.843 - **toml-j0.4 1.1.1** - *javascript*  
-▓&nbsp;&nbsp;22.402 - **enorb 0.4.5** - *ruby*  
-░&nbsp;&nbsp;24.157 - **yaml 2.5.0** - *ruby*  
-░░&nbsp;&nbsp;26.592 - **tomlrb 1.2.7** - *ruby*  
+▓&nbsp;&nbsp;22.710 - **enorb 0.4.6** - *ruby*  
+░&nbsp;&nbsp;24.705 - **yaml 2.5.0** - *ruby*  
+░░&nbsp;&nbsp;26.813 - **tomlrb 1.2.7** - *ruby*  
 ▓▓&nbsp;&nbsp;33.219 - **enopy 0.2.7** - *python*  
 ░░░&nbsp;&nbsp;55.951 - **toml 2.3.3** - *javascript*  
 ░░░░░░░░░░░&nbsp;&nbsp;265.648 - **pyyaml 3.12** - *python*  
-░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;535.804 - **toml-rb 1.1.1** - *ruby*  
+░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;571.870 - **toml-rb 1.1.1** - *ruby*  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;937.901 - **ruamel.yaml 0.15.40** - *python*  
