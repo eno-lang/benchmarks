@@ -1,7 +1,7 @@
 {
   "author": "Simon Repp <simon@fdpl.io>",
   "dependencies": {
-    "enojs": "^0.10.5",
+    "enojs": "^0.11.0",
     "enojs-exploaders": "^0.1.3",
     "js-yaml": "^3.12.0",
     "toml": "^2.3.3",

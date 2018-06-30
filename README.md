@@ -34,22 +34,22 @@ simple, random benchmark.
 
 ## The latest report
 
-Generated on Thu Jun 28 2018 17:08:07 GMT+0200 (Central European Summer Time)
+Generated on Sat Jun 30 2018 19:44:44 GMT+0200 (Central European Summer Time)
 
 
 ### abstract_hierarchy
 
-░&nbsp;&nbsp;1.653 - **js-yaml 3.12.0** - *javascript*  
-▓&nbsp;&nbsp;1.662 - **enojs 0.10.5** - *javascript*  
-░░░░░░&nbsp;&nbsp;6.267 - **toml-j0.4 1.1.1** - *javascript*  
+▓&nbsp;&nbsp;1.539 - **enojs 0.11.0** - *javascript*  
+░&nbsp;&nbsp;1.725 - **js-yaml 3.12.0** - *javascript*  
+░░░░░░&nbsp;&nbsp;6.330 - **toml-j0.4 1.1.1** - *javascript*  
 ▓▓▓▓▓▓▓▓▓▓▓▓&nbsp;&nbsp;12.157 - **enorb 0.4.6** - *ruby*  
 ░░░░░░░░░░░░░&nbsp;&nbsp;13.722 - **yaml 2.5.0** - *ruby*  
 ░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;18.082 - **tomlrb 1.2.7** - *ruby*  
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓&nbsp;&nbsp;20.462 - **enopy 0.2.7** - *python*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
-░░░░░  
-65.040 - **toml 2.3.3** - *javascript*  
+░░░░░░  
+66.199 - **toml 2.3.3** - *javascript*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
@@ -88,8 +88,8 @@ Generated on Thu Jun 28 2018 17:08:07 GMT+0200 (Central European Summer Time)
 
 ### content_heavy
 
-▓▓▓▓▓▓&nbsp;&nbsp;6.437 - **enojs 0.10.5** - *javascript*  
-░░░░░░░&nbsp;&nbsp;7.095 - **js-yaml 3.12.0** - *javascript*  
+&nbsp;&nbsp;0.968 - **enojs 0.11.0** - *javascript*  
+░░░░░░░&nbsp;&nbsp;7.172 - **js-yaml 3.12.0** - *javascript*  
 ▓▓▓▓▓▓▓▓▓&nbsp;&nbsp;9.947 - **enorb 0.4.6** - *ruby*  
 ▓▓▓▓▓▓▓▓▓▓▓&nbsp;&nbsp;11.640 - **enopy 0.2.7** - *python*  
 ░░░░░░░░░░░░░░&nbsp;&nbsp;14.670 - **yaml 2.5.0** - *ruby*  
@@ -100,8 +100,8 @@ Generated on Thu Jun 28 2018 17:08:07 GMT+0200 (Central European Summer Time)
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
-░░░░░░░░░░░░░░░░░░  
-318.403 - **toml-j0.4 1.1.1** - *javascript*  
+░░░░░░░░░░░░░░░░░░░░░░░  
+323.855 - **toml-j0.4 1.1.1** - *javascript*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
@@ -356,22 +356,22 @@ Generated on Thu Jun 28 2018 17:08:07 GMT+0200 (Central European Summer Time)
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
-░░░░░░░░░░░░░░░░░░░  
-7939.077 - **toml 2.3.3** - *javascript*  
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
+7958.780 - **toml 2.3.3** - *javascript*  
 
 ### invented_server_configuration
 
-░&nbsp;&nbsp;1.639 - **js-yaml 3.12.0** - *javascript*  
-▓▓&nbsp;&nbsp;2.411 - **enojs 0.10.5** - *javascript*  
-░░░░░░░░░&nbsp;&nbsp;9.986 - **toml-j0.4 1.1.1** - *javascript*  
+░&nbsp;&nbsp;1.630 - **js-yaml 3.12.0** - *javascript*  
+▓▓&nbsp;&nbsp;2.402 - **enojs 0.11.0** - *javascript*  
+░░░░░░░░░&nbsp;&nbsp;9.916 - **toml-j0.4 1.1.1** - *javascript*  
 ▓▓▓▓▓▓▓▓▓▓▓▓▓&nbsp;&nbsp;13.780 - **enorb 0.4.6** - *ruby*  
 ░░░░░░░░░░░░░░&nbsp;&nbsp;14.024 - **yaml 2.5.0** - *ruby*  
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓&nbsp;&nbsp;23.170 - **enopy 0.2.7** - *python*  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;31.269 - **tomlrb 1.2.7** - *ruby*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
-98.842 - **toml 2.3.3** - *javascript*  
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
+100.342 - **toml 2.3.3** - *javascript*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
@@ -419,13 +419,13 @@ Generated on Thu Jun 28 2018 17:08:07 GMT+0200 (Central European Summer Time)
 
 ### jekyll_post_example
 
-&nbsp;&nbsp;0.836 - **js-yaml 3.12.0** - *javascript*  
-&nbsp;&nbsp;0.890 - **enojs 0.10.5** - *javascript*  
+&nbsp;&nbsp;0.812 - **enojs 0.11.0** - *javascript*  
+&nbsp;&nbsp;0.858 - **js-yaml 3.12.0** - *javascript*  
 ░░░░░░&nbsp;&nbsp;6.008 - **tomlrb 1.2.7** - *ruby*  
 ▓▓▓▓▓▓▓&nbsp;&nbsp;7.254 - **enopy 0.2.7** - *python*  
 ▓▓▓▓▓▓▓&nbsp;&nbsp;7.308 - **enorb 0.4.6** - *ruby*  
 ░░░░░░░░&nbsp;&nbsp;8.766 - **yaml 2.5.0** - *ruby*  
-░░░░░░░░░░░&nbsp;&nbsp;11.639 - **toml-j0.4 1.1.1** - *javascript*  
+░░░░░░░░░░░&nbsp;&nbsp;11.865 - **toml-j0.4 1.1.1** - *javascript*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
@@ -434,7 +434,7 @@ Generated on Thu Jun 28 2018 17:08:07 GMT+0200 (Central European Summer Time)
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
-151.942 - **toml 2.3.3** - *javascript*  
+151.664 - **toml 2.3.3** - *javascript*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
@@ -450,17 +450,17 @@ Generated on Thu Jun 28 2018 17:08:07 GMT+0200 (Central European Summer Time)
 
 ### journey_route_data
 
-░░░&nbsp;&nbsp;3.540 - **js-yaml 3.12.0** - *javascript*  
-▓▓▓&nbsp;&nbsp;3.583 - **enojs 0.10.5** - *javascript*  
-░░░░░░░░░░░░░░░&nbsp;&nbsp;15.632 - **toml-j0.4 1.1.1** - *javascript*  
+░░░&nbsp;&nbsp;3.624 - **js-yaml 3.12.0** - *javascript*  
+▓▓▓&nbsp;&nbsp;3.653 - **enojs 0.11.0** - *javascript*  
+░░░░░░░░░░░░░░░&nbsp;&nbsp;15.671 - **toml-j0.4 1.1.1** - *javascript*  
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓&nbsp;&nbsp;20.397 - **enorb 0.4.6** - *ruby*  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;33.253 - **tomlrb 1.2.7** - *ruby*  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;33.872 - **yaml 2.5.0** - *ruby*  
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓&nbsp;&nbsp;36.553 - **enopy 0.2.7** - *python*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
-100.486 - **toml 2.3.3** - *javascript*  
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
+101.593 - **toml 2.3.3** - *javascript*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
@@ -527,14 +527,14 @@ Generated on Thu Jun 28 2018 17:08:07 GMT+0200 (Central European Summer Time)
 
 ### yaml_invoice_example
 
-░░&nbsp;&nbsp;2.798 - **js-yaml 3.12.0** - *javascript*  
-▓▓▓▓&nbsp;&nbsp;4.407 - **enojs 0.10.5** - *javascript*  
-░░░░░░░░░░░░&nbsp;&nbsp;12.843 - **toml-j0.4 1.1.1** - *javascript*  
+░░&nbsp;&nbsp;2.629 - **js-yaml 3.12.0** - *javascript*  
+▓▓▓▓&nbsp;&nbsp;4.046 - **enojs 0.11.0** - *javascript*  
+░░░░░░░░░░░░&nbsp;&nbsp;12.644 - **toml-j0.4 1.1.1** - *javascript*  
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓&nbsp;&nbsp;22.710 - **enorb 0.4.6** - *ruby*  
 ░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;24.705 - **yaml 2.5.0** - *ruby*  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;26.813 - **tomlrb 1.2.7** - *ruby*  
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓&nbsp;&nbsp;33.219 - **enopy 0.2.7** - *python*  
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;55.951 - **toml 2.3.3** - *javascript*  
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░&nbsp;&nbsp;56.690 - **toml 2.3.3** - *javascript*  
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
