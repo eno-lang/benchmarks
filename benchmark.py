@@ -8,7 +8,7 @@ import yaml
 PYYAML_VERSION = pkg_resources.get_distribution('pyyaml').version
 
 from ruamel.yaml import YAML
-ruamel = YAML()
+ruamel = YAML(typ='safe')
 RUAMEL_YAML_VERSION = pkg_resources.get_distribution('ruamel.yaml').version
 
 class PythonReport:
@@ -29,7 +29,7 @@ class PythonReport:
 
     self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_hierarchy))
     self.benchmark('pyyaml', PYYAML_VERSION, lambda: yaml.load(yaml_hierarchy), 10)
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_hierarchy), 100)
+    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_hierarchy))
 
 
     self.scenario('content_heavy')
@@ -43,7 +43,7 @@ class PythonReport:
 
     self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_content))
     self.benchmark('pyyaml', PYYAML_VERSION, lambda: yaml.load(yaml_content), 100)
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_content), 100)
+    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_content))
 
 
     self.scenario('invented_server_configuration')
@@ -57,7 +57,7 @@ class PythonReport:
 
     self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_configuration))
     self.benchmark('pyyaml', PYYAML_VERSION, lambda: yaml.load(yaml_configuration), 10)
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_configuration), 100)
+    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_configuration))
 
 
     self.scenario('jekyll_post_example')
@@ -71,7 +71,7 @@ class PythonReport:
 
     self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_post))
     self.benchmark('pyyaml', PYYAML_VERSION, lambda: yaml.load(yaml_post), 10)
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_post), 10)
+    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_post))
 
 
     self.scenario('journey_route_data')
@@ -85,7 +85,7 @@ class PythonReport:
 
     self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_journey))
     self.benchmark('pyyaml', PYYAML_VERSION, lambda: yaml.load(yaml_journey), 10)
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_journey), 100)
+    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_journey))
 
 
     self.scenario('yaml_invoice_example')
@@ -99,7 +99,7 @@ class PythonReport:
 
     self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_invoice))
     self.benchmark('pyyaml', PYYAML_VERSION, lambda: yaml.load(yaml_invoice), 10)
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_invoice), 100)
+    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_invoice))
 
 
     with open('reports/python.eno', 'w') as file:
