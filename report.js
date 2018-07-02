@@ -1,24 +1,22 @@
 const fs = require('fs');
 const eno = require('enojs');
+const { EnoSection } = require('enojs');
 const loaders = require('enojs-exploaders');
 const path = require('path');
 
 const results = {
-  abstract_hierarchy: [],
-  content_heavy: [],
-  invented_server_configuration: [],
-  jekyll_post_example: [],
-  journey_route_data: [],
-  yaml_invoice_example: []
+  'JavaScript': {},
+  'Python': {},
+  'Ruby': {}
 };
 
 let maxTime = 0;
 let previousIterations;
 
-for(language of ['javascript', 'python', 'ruby']) {
-  const input = fs.readFileSync(path.join(__dirname, `reports/${language}.eno`), 'utf-8');
+for(language of Object.keys(results)) {
+  const input = fs.readFileSync(path.join(__dirname, `reports/${language.toLowerCase()}.eno`), 'utf-8');
   const report = eno.parse(input, { reporter: 'terminal' });
-  const body = report.section(language);
+  const body = report.section(language.toLowerCase());
 
   const iterations = body.field('iterations', loaders.integer);
   if(previousIterations && iterations !== previousIterations) {
@@ -27,13 +25,17 @@ for(language of ['javascript', 'python', 'ruby']) {
     previousIterations = iterations;
   }
 
-  for(let scenario of Object.keys(results)) {
-    const section = body.section(scenario);
+  for(let element of body.elements()) {
+    if(!(element instanceof EnoSection)) continue;
 
-    for(let benchmark of section.elements()) {
+    const scenario = element.name;
+
+    results[language][scenario] = [];
+
+    for(let benchmark of element.elements()) {
       const time = benchmark.value(loaders.float);
 
-      results[scenario].push({
+      results[language][scenario].push({
         language: language,
         library: benchmark.name,
         time: time
@@ -42,13 +44,15 @@ for(language of ['javascript', 'python', 'ruby']) {
       maxTime = Math.max(maxTime, time);
     }
 
-    results[scenario] = results[scenario].sort((a, b) => a.time - b.time);
+    results[language][scenario] = results[language][scenario].sort((a, b) => a.time - b.time);
   }
 }
 
-let report = '# Benchmarks\n';
+let report = `
+# Benchmarks
 
-report += `
+Last generated on ${new Date()}
+
 These are benchmarks to evaluate the performance of all current eno library
 implementations in comparism to each other, as well as in comparism to the most
 popular yaml/toml parsers out there.
@@ -76,37 +80,36 @@ Each ░ represents one second, the maximum bar width displayed in a line is 60 
 slower performance speed compared to the top ranking parsers, these have been
 partially sampled with up to only 1k iterations, with the total duration
 extrapolated for the global comparison again. Although they somewhat destroy the
-layout, their graphical bar representations are included in the report
-nonetheless, it should give us some thought that popular libraries with
-downloads going up into the millions exhibit that kind of performance in a
-simple, random benchmark.
-
-## The latest report
-
-Generated on ${new Date()}
+layout, their graphical bar representations are included in the report to point
+out the drastic differences without any distortion.
 
 `;
 
-for(let scenario of Object.keys(results)) {
-  report += `\n### ${scenario}\n\n`;
+for(let [language, scenarios] of Object.entries(results)) {
+  // report += `\n---\n## \n\n`;
+  report += '\n---\n';
 
-  for(let benchmark of results[scenario]) {
-    const barChar = benchmark.library.includes('eno') ? '▓' : '░';
+  for(let [scenario, benchmarks] of Object.entries(scenarios)) {
+    report += `\n## ${language} - ${scenario}\n\n&nbsp;  \n`;
 
-    let bar = 60 * (benchmark.time / 60);
+    for(let benchmark of benchmarks) {
+      const isEno = benchmark.library.includes('eno');
+      let bar = 60 * (benchmark.time / 60);
 
-    if(bar > 60) {
-      report += '\n';
-      while(bar > 0) {
-        report += barChar.repeat(Math.min(bar, 60)) + '  \n';
-        bar -= 60;
+      if(bar > 60) {
+        // report += '\n';
+        while(bar > 0) {
+          report += '░'.repeat(Math.min(bar, 60));
+          bar -= 60;
+          if(bar > 0) report += '  \n';
+        }
+
+        report += `&nbsp;&nbsp;${isEno ? '**':''}${benchmark.time.toFixed(3)} - *${benchmark.library}* ${isEno ? '**':''}  \n`;
+      } else {
+        report += `${'░'.repeat(bar)}&nbsp;&nbsp;${isEno ? '**':''}${benchmark.time.toFixed(3)} - *${benchmark.library}* ${isEno ? '**':''}  \n`;
       }
 
-      report += `${benchmark.time.toFixed(3)} - **${benchmark.library}** - *${benchmark.language}*  \n`;
-    } else {
-      report += `${barChar.repeat(bar)}&nbsp;&nbsp;${benchmark.time.toFixed(3)} - **${benchmark.library}** - *${benchmark.language}*  \n`;
     }
-
   }
 }
 
