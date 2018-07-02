@@ -104,9 +104,9 @@ for(let [language, scenarios] of Object.entries(results)) {
           if(bar > 0) report += '  \n';
         }
 
-        report += `&nbsp;&nbsp;${isEno ? '**':''}${benchmark.time.toFixed(3)} - *${benchmark.library}* ${isEno ? '**':''}  \n`;
+        report += `&nbsp;&nbsp;${isEno ? '**':''}${benchmark.time.toFixed(3)} - *${benchmark.library}*${isEno ? '**':''}  \n`;
       } else {
-        report += `${'░'.repeat(bar)}&nbsp;&nbsp;${isEno ? '**':''}${benchmark.time.toFixed(3)} - *${benchmark.library}* ${isEno ? '**':''}  \n`;
+        report += `${'░'.repeat(bar)}&nbsp;&nbsp;${isEno ? '**':''}${benchmark.time.toFixed(3)} - *${benchmark.library}*${isEno ? '**':''}  \n`;
       }
 
     }
