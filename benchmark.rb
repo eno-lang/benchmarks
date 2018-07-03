@@ -64,8 +64,8 @@ class RubyReport
     benchmark('enorb', ENORB_VERSION) { Eno.parse(eno_content) }
     # benchmark('toml', TOML_VERSION, 100) { TOML.load(toml_content) } ERRORS
     benchmark('toml-rb', TOML_RB_VERSION, 100) { TomlRB.parse(toml_content) }
-    benchmark('tomlrb', TOMLRB_VERSION, 10) { Tomlrb.parse(toml_content) }
-    benchmark('yaml', YAML_VERSION, 10) { YAML.load(yaml_content) }
+    benchmark('tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_content) }
+    benchmark('yaml', YAML_VERSION) { YAML.load(yaml_content) }
 
 
     scenario('invented_server_configuration')
