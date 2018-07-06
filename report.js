@@ -1,7 +1,6 @@
 const fs = require('fs');
 const eno = require('enojs');
-const { EnoSection } = require('enojs');
-const loaders = require('enojs-exploaders');
+const { EnoSection, loaders } = require('enojs');
 const path = require('path');
 
 const results = {
