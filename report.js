@@ -68,39 +68,12 @@ To get an impression how the report was compiled, please study \`report.js\` ins
 Benchmarks are currently performed on Ubuntu 17.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 and in recent language runtimes (node 10.5.0, python 3.6.3, ruby 2.5.0p0).
 `;
 
-
-
-report += `
-## Numerical results
-(Graphical results are presented further down)\n\n
-
-Numerical values represent the number of **seconds elapsed during 100k (\*) iterations** of the respective code example, or in other words, **smaller numbers indicate better performance**.
-
-
-
-`;
-
-
-for(let [language, scenarios] of Object.entries(results)) {
-  report += `\n### ${language}\n`;
-
-  for(let [scenario, benchmarks] of Object.entries(scenarios)) {
-    report += `\n#### *${scenario}*\n\n`;
-
-    report += `| Library | Number of seconds for 100k (*) iterations |\n`;
-    report += `| ------- | ------------------------------------- |\n`;
-
-    for(let benchmark of benchmarks) {
-      const isEno = benchmark.library.includes('eno');
-      report += `| ${isEno ? '**':''}${benchmark.library}${isEno ? '**':''} | ${isEno ? '**':''}${benchmark.time.toFixed(3)}${isEno ? '**':''} |\n`;
-    }
-  }
-}
-
 report += `
 ## Graphical results
+(A numbers-only table report is provided further down)
 
-Each ░ represents one second, and as with the numbers above **shorter bars indicate better performance**
+Shorter bars/smaller numbers indicate better performance.  
+Each ░ represents one second.
 `;
 
 for(let [language, scenarios] of Object.entries(results)) {
@@ -121,6 +94,31 @@ for(let [language, scenarios] of Object.entries(results)) {
     }
 
     report += `\`\`\`\n`;
+  }
+}
+
+
+report += `
+## Numerical results
+
+Smaller numbers indicate better performance.
+
+`;
+
+
+for(let [language, scenarios] of Object.entries(results)) {
+  report += `\n### ${language}\n`;
+
+  for(let [scenario, benchmarks] of Object.entries(scenarios)) {
+    report += `\n#### *${scenario}*\n\n`;
+
+    report += `| Library | Number of seconds for 100k (*) iterations |\n`;
+    report += `| ------- | ------------------------------------- |\n`;
+
+    for(let benchmark of benchmarks) {
+      const isEno = benchmark.library.includes('eno');
+      report += `| ${isEno ? '**':''}${benchmark.library}${isEno ? '**':''} | ${isEno ? '**':''}${benchmark.time.toFixed(3)}${isEno ? '**':''} |\n`;
+    }
   }
 }
 
