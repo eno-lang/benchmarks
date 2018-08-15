@@ -60,8 +60,6 @@ As with all statistics please take these findings with a grain of salt,
 and feel warmly invited to re-run these benchmarks or point out flaws and
 possible improvements to the methodology and code.
 
----
-
 ## How the data is gathered
 
 To get an impression how the measurements were obtained, please take a look at the source of \`benchmark.js/py/rb\` inside this repository.
@@ -73,8 +71,6 @@ Benchmarks are currently performed on Ubuntu 17.10 on an Intel® Xeon(R) CPU E5-
 
 
 report += `
----
-
 ## Numerical results
 (Graphical results are presented further down)\n\n
 
@@ -102,8 +98,6 @@ for(let [language, scenarios] of Object.entries(results)) {
 }
 
 report += `
----
-
 ## Graphical results
 
 Each ░ represents one second, and as with the numbers above **shorter bars indicate better performance**

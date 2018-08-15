@@ -1,7 +1,7 @@
 
 # Benchmarks
 
-Last generated on Wed Aug 15 2018 16:40:49 GMT+0200 (Central European Summer Time)
+Last generated on Wed Aug 15 2018 16:43:27 GMT+0200 (Central European Summer Time)
 
 These are benchmarks to evaluate the performance of all current eno library
 implementations in comparism to each other, as well as in comparism to the most
@@ -11,16 +11,12 @@ As with all statistics please take these findings with a grain of salt,
 and feel warmly invited to re-run these benchmarks or point out flaws and
 possible improvements to the methodology and code.
 
----
-
 ## How the data is gathered
 
 To get an impression how the measurements were obtained, please take a look at the source of `benchmark.js/py/rb` inside this repository.
 To get an impression how the report was compiled, please study `report.js` inside this repository.
 
 Benchmarks are currently performed on Ubuntu 17.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 and in recent language runtimes (node 10.5.0, python 3.6.3, ruby 2.5.0p0).
-
----
 
 ## Numerical results
 (Graphical results are presented further down)
@@ -196,8 +192,6 @@ Numerical values represent the number of **seconds elapsed during 100k (*) itera
 | **enorb 0.6.0** | **23.680** |
 | tomlrb 1.2.7 | 26.267 |
 | toml-rb 1.1.1 | 545.785 |
-
----
 
 ## Graphical results
 
