@@ -60,56 +60,83 @@ As with all statistics please take these findings with a grain of salt,
 and feel warmly invited to re-run these benchmarks or point out flaws and
 possible improvements to the methodology and code.
 
+---
+
 ## How the data is gathered
 
 To get an impression how the measurements were obtained, please take a look at the source of \`benchmark.js/py/rb\` inside this repository.
 To get an impression how the report was compiled, please study \`report.js\` inside this repository.
 
 Benchmarks are currently performed on Ubuntu 17.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 and in recent language runtimes (node 10.5.0, python 3.6.3, ruby 2.5.0p0).
+`;
 
-## How to interpret the results below
 
-Numerical values represent the number of seconds elapsed during 100k (\*) iterations of the respective code example, or in other words, smaller numbers indicate better performance.
 
-Each ░ represents one second, the maximum bar width displayed in a line is 60 seconds, so this represents one minute in the graphs below:
+report += `
+---
 
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+## Numerical results
+(Graphical results are presented further down)\n\n
 
-(\*) Note: Some libraries included in the benchmark exhibit an up to 1000x
-slower performance speed compared to the top ranking parsers, these have been
-partially sampled with up to only 1k iterations, with the total duration
-extrapolated for the global comparison again. Although they somewhat destroy the
-layout, their graphical bar representations are included in the report to point
-out the drastic differences without any distortion.
+Numerical values represent the number of **seconds elapsed during 100k (\*) iterations** of the respective code example, or in other words, **smaller numbers indicate better performance**.
 
+
+
+`;
+
+
+for(let [language, scenarios] of Object.entries(results)) {
+  report += `\n### ${language}\n`;
+
+  for(let [scenario, benchmarks] of Object.entries(scenarios)) {
+    report += `\n#### *${scenario}*\n\n`;
+
+    report += `| Library | Number of seconds for 100k (*) iterations |\n`;
+    report += `| ------- | ------------------------------------- |\n`;
+
+    for(let benchmark of benchmarks) {
+      const isEno = benchmark.library.includes('eno');
+      report += `| ${isEno ? '**':''}${benchmark.library}${isEno ? '**':''} | ${isEno ? '**':''}${benchmark.time.toFixed(3)}${isEno ? '**':''} |\n`;
+    }
+  }
+}
+
+report += `
+---
+
+## Graphical results
+
+Each ░ represents one second, and as with the numbers above **shorter bars indicate better performance**
 `;
 
 for(let [language, scenarios] of Object.entries(results)) {
   // report += `\n---\n## \n\n`;
-  report += '\n---\n';
+  report += `\n### ${language}\n`;
 
   for(let [scenario, benchmarks] of Object.entries(scenarios)) {
-    report += `\n## ${language} - ${scenario}\n\n&nbsp;  \n`;
+    report += `\n#### *${scenario}*\n\n&nbsp;  \n\`\`\`\n`;
+
+    report += 'LIBRARY'.padEnd(20) + ' NUMBER OF SECONDS FOR 100K (*) ITERATIONS\n\n';
 
     for(let benchmark of benchmarks) {
       const isEno = benchmark.library.includes('eno');
       let bar = 60 * (benchmark.time / 60);
+      const block = isEno ? '▓' : '░';
 
-      if(bar > 60) {
-        // report += '\n';
-        while(bar > 0) {
-          report += '░'.repeat(Math.min(bar, 60));
-          bar -= 60;
-          if(bar > 0) report += '  \n';
-        }
-
-        report += `&nbsp;&nbsp;${isEno ? '**':''}${benchmark.time.toFixed(3)} - *${benchmark.library}*${isEno ? '**':''}  \n`;
-      } else {
-        report += `${'░'.repeat(bar)}&nbsp;&nbsp;${isEno ? '**':''}${benchmark.time.toFixed(3)} - *${benchmark.library}*${isEno ? '**':''}  \n`;
-      }
-
+      report += `${benchmark.library.padEnd(20)} [${block.repeat(bar)}] ${benchmark.time.toFixed(3)}\n`;
     }
+
+    report += `\`\`\`\n`;
   }
 }
+
+report += `
+---
+
+**(\*) Note**: Some libraries included in the benchmarks exhibit an up to 1000x
+slower performance compared to the top ranking parsers, these have been
+partially sampled with up to only 1k iterations, with the total duration
+extrapolated for the global comparison again.
+`;
 
 fs.writeFileSync(path.join(__dirname, 'README.md'), report);
