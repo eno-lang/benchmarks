@@ -1,6 +1,6 @@
 const fs = require('fs');
 const eno = require('enojs');
-const { EnoSection, loaders } = require('enojs');
+const { Section, TerminalReporter } = require('enojs');
 const path = require('path');
 
 const results = {
@@ -14,10 +14,10 @@ let previousIterations;
 
 for(language of Object.keys(results)) {
   const input = fs.readFileSync(path.join(__dirname, `reports/${language.toLowerCase()}.eno`), 'utf-8');
-  const report = eno.parse(input, { reporter: 'terminal' });
+  const report = eno.parse(input, { reporter: TerminalReporter });
   const body = report.section(language.toLowerCase());
 
-  const iterations = body.field('iterations', loaders.integer);
+  const iterations = body.integer('iterations');
   if(previousIterations && iterations !== previousIterations) {
     throw body.element('iterations').error(`This benchmark has a different number of iterations (${iterations}) than one of the others (${previousIterations}).`);
   } else {
@@ -25,14 +25,14 @@ for(language of Object.keys(results)) {
   }
 
   for(let element of body.elements()) {
-    if(!(element instanceof EnoSection)) continue;
+    if(!(element instanceof Section)) continue;
 
     const scenario = element.name;
 
     results[language][scenario] = [];
 
     for(let benchmark of element.elements()) {
-      const time = benchmark.value(loaders.float);
+      const time = benchmark.float();
 
       results[language][scenario].push({
         language: language,
@@ -65,14 +65,14 @@ possible improvements to the methodology and code.
 To get an impression how the measurements were obtained, please take a look at the source of \`benchmark.js/py/rb\` inside this repository.
 To get an impression how the report was compiled, please study \`report.js\` inside this repository.
 
-Benchmarks are currently performed on Ubuntu 17.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 and in recent language runtimes (node 10.5.0, python 3.6.3, ruby 2.5.0p0).
+Benchmarks are currently performed on Ubuntu 18.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 and in recent language runtimes (node 11.5.0, python 3.6.3, ruby 2.5.0p0).
 `;
 
 report += `
 ## Graphical results
 (A numbers-only table report is provided further down)
 
-Shorter bars/smaller numbers indicate better performance.  
+Shorter bars/smaller numbers indicate better performance.
 Each ░ represents one second.
 `;
 
