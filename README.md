@@ -1,7 +1,7 @@
 
 # Benchmarks
 
-Last generated on Fri Jan 04 2019 11:11:55 GMT+0100 (Central European Standard Time)
+Last generated on Fri Jan 04 2019 11:13:32 GMT+0100 (Central European Standard Time)
 
 These are benchmarks to evaluate the performance of all current eno library
 implementations in comparism to each other, as well as in comparism to the most
@@ -16,7 +16,7 @@ possible improvements to the methodology and code.
 To get an impression how the measurements were obtained, please take a look at the source of `benchmark.js/py/rb` inside this repository.
 To get an impression how the report was compiled, please study `report.js` inside this repository.
 
-Benchmarks are currently performed on Ubuntu 18.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 and in recent language runtimes (node 11.5.0, python 3.6.3, ruby 2.5.0p0).
+Benchmarks are currently performed on Ubuntu 18.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 and in recent language runtimes (node 11.5.0, python 3.6.3, ruby 2.5.3p105).
 
 ## Graphical results
 (A numbers-only table report is provided further down)
