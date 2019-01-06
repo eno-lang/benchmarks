@@ -65,7 +65,7 @@ possible improvements to the methodology and code.
 To get an impression how the measurements were obtained, please take a look at the source of \`benchmark.js/py/rb\` inside this repository.
 To get an impression how the report was compiled, please study \`report.js\` inside this repository.
 
-Benchmarks are currently performed on Ubuntu 18.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 and in recent language runtimes (node 11.5.0, python 3.6.3, ruby 2.5.3p105).
+Benchmarks are currently performed on Ubuntu 18.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 and in recent language runtimes (node 11.5.0, python 3.6.7, ruby 2.5.3p105).
 `;
 
 report += `
