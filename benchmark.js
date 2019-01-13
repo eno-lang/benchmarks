@@ -15,7 +15,13 @@ const ITERATIONS = 100000;
 
 let enoInput, mdInput, tomlInput, yamlInput;
 
-let report = `# javascript\n\niterations: ${ITERATIONS}\nevaluated: ${new Date()}\n`;
+let report = `
+# javascript
+
+evaluated: ${(new Date()).toISOString().replace(/\.[0-9]{3}/, '')}
+iterations: ${ITERATIONS}
+runtime: node ${process.version} [${process.platform}-${process.arch}]
+`.trimStart();
 
 const scenario = (file) => {
   report += `\n## ${file}\n\n`;
