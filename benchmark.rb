@@ -1,4 +1,5 @@
 require 'benchmark'
+require 'time'
 
 require 'enorb'
 ENORB_VERSION = Gem.loaded_specs['enorb'].version
@@ -19,7 +20,13 @@ class RubyReport
   ITERATIONS = 100000
 
   def initialize
-    @report = "# ruby\n\niterations: #{ITERATIONS}\nevaluated: #{Time.now}\n"
+    @report = <<~ENO
+      # ruby
+
+      evaluated: #{Time.now.iso8601}
+      iterations: #{ITERATIONS}
+      runtime: #{RUBY_DESCRIPTION}
+    ENO
   end
 
   def benchmark(library, version, iteration_cutback_factor = 1)
