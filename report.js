@@ -1,12 +1,19 @@
 const fs = require('fs');
 const eno = require('enojs');
 const { Section, TerminalReporter } = require('enojs');
+const moment = require('moment');
 const path = require('path');
 
 const results = {
-  'JavaScript': {},
-  'Python': {},
-  'Ruby': {}
+  'JavaScript': {
+    scenarios: {}
+  },
+  'Python': {
+    scenarios: {}
+  },
+  'Ruby': {
+    scenarios: {}
+  }
 };
 
 let maxTime = 0;
@@ -24,18 +31,20 @@ for(language of Object.keys(results)) {
     previousIterations = iterations;
   }
 
+  results[language].evaluated = body.datetime('evaluated', { required: true });
+  results[language].runtime = body.string('runtime', { required: true });
+
   for(let element of body.elements()) {
     if(!(element instanceof Section)) continue;
 
     const scenario = element.name;
 
-    results[language][scenario] = [];
+    results[language].scenarios[scenario] = [];
 
     for(let benchmark of element.elements()) {
       const time = benchmark.float();
 
-      results[language][scenario].push({
-        language: language,
+      results[language].scenarios[scenario].push({
         library: benchmark.name,
         time: time
       });
@@ -43,14 +52,14 @@ for(language of Object.keys(results)) {
       maxTime = Math.max(maxTime, time);
     }
 
-    results[language][scenario] = results[language][scenario].sort((a, b) => a.time - b.time);
+    results[language].scenarios[scenario] = results[language].scenarios[scenario].sort((a, b) => a.time - b.time);
   }
 }
 
 let report = `
 # Benchmarks
 
-Last generated on ${new Date()}
+This report was generated on **${moment().format('MMMM Do YYYY')}**.
 
 These are benchmarks to evaluate the performance of all current eno library
 implementations in comparism to each other, as well as in comparism to the most
@@ -65,7 +74,7 @@ possible improvements to the methodology and code.
 To get an impression how the measurements were obtained, please take a look at the source of \`benchmark.js/py/rb\` inside this repository.
 To get an impression how the report was compiled, please study \`report.js\` inside this repository.
 
-Benchmarks are currently performed on Ubuntu 18.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 and in recent language runtimes (node 11.5.0, python 3.6.7, ruby 2.5.3p105).
+Benchmarks are currently performed on Ubuntu 18.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 (see language sections below for detailed runtime info).
 `;
 
 report += `
@@ -76,11 +85,14 @@ Shorter bars/smaller numbers indicate better performance.
 Each ░ represents one second.
 `;
 
-for(let [language, scenarios] of Object.entries(results)) {
-  // report += `\n---\n## \n\n`;
-  report += `\n### ${language}\n`;
+for(let [language, languageData] of Object.entries(results)) {
+  report += `
+### ${language}
 
-  for(let [scenario, benchmarks] of Object.entries(scenarios)) {
+Evaluated in **${languageData.runtime}** on **${moment(languageData.evaluated).format('MMMM Do YYYY')}**.
+`;
+
+  for(let [scenario, benchmarks] of Object.entries(languageData.scenarios)) {
     report += `\n#### *${scenario}*\n\n&nbsp;  \n\`\`\`\n`;
 
     report += 'LIBRARY'.padEnd(20) + ' NUMBER OF SECONDS FOR 100K (*) ITERATIONS\n\n';
@@ -90,7 +102,7 @@ for(let [language, scenarios] of Object.entries(results)) {
       let bar = 60 * (benchmark.time / 60);
       const block = isEno ? '▓' : '░';
 
-      report += `${benchmark.library.padEnd(20)} [${block.repeat(bar)}] ${benchmark.time.toFixed(3)}\n`;
+      report += `${benchmark.library.padEnd(21)} [${block.repeat(bar)}] ${benchmark.time.toFixed(3)}\n`;
     }
 
     report += `\`\`\`\n`;
@@ -106,10 +118,14 @@ Smaller numbers indicate better performance.
 `;
 
 
-for(let [language, scenarios] of Object.entries(results)) {
-  report += `\n### ${language}\n`;
+for(let [language, languageData] of Object.entries(results)) {
+  report += `
+### ${language}
 
-  for(let [scenario, benchmarks] of Object.entries(scenarios)) {
+Evaluated in **${languageData.runtime}** on **${moment(languageData.evaluated).format('MMMM Do YYYY')}**.
+`;
+
+  for(let [scenario, benchmarks] of Object.entries(languageData.scenarios)) {
     report += `\n#### *${scenario}*\n\n`;
 
     report += `| Library | Number of seconds for 100k (*) iterations |\n`;
