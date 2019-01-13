@@ -23,7 +23,7 @@ class RubyReport
     @report = <<~ENO
       # ruby
 
-      evaluated: #{Time.now.iso8601}
+      evaluated: #{Time.now.utc.iso8601}
       iterations: #{ITERATIONS}
       runtime: #{RUBY_DESCRIPTION}
     ENO
