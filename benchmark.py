@@ -1,5 +1,6 @@
 import pkg_resources, time
-from datetime import datetime
+from datetime import datetime, timezone
+from platform import platform, python_implementation, python_version
 
 import enopy
 ENOPY_VERSION = pkg_resources.get_distribution('enopy').version
@@ -15,7 +16,13 @@ class PythonReport:
   ITERATIONS = 100000
 
   def __init__(self):
-    self.report = f"# python\n\niterations: {self.ITERATIONS}\nevaluated: {str(datetime.now())}\n"
+    self.report = f"""
+# python
+
+evaluated: {datetime.utcnow().replace(microsecond=0, tzinfo=timezone.utc).isoformat()}
+iterations: {self.ITERATIONS}
+runtime: {python_implementation()} {python_version()} [{platform()}]
+    """.lstrip()
 
   def generate(self):
     self.scenario('abstract_hierarchy')
