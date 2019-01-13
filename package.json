@@ -1,9 +1,9 @@
 {
   "author": "Simon Repp <simon@fdpl.io>",
   "dependencies": {
-    "enojs": "^0.17.1",
-    "js-yaml": "^3.12.0",
-    "toml": "^2.3.3",
+    "enojs": "^0.17.2",
+    "js-yaml": "^3.12.1",
+    "toml": "^2.3.5",
     "toml-j0.4": "^1.1.1"
   },
   "name": "benchmarks",
