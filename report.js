@@ -1,8 +1,11 @@
 const fs = require('fs');
-const eno = require('enojs');
-const { Section, TerminalReporter } = require('enojs');
+const enolib = require('enolib');
+const { Section, TerminalReporter } = require('enolib');
+const { datetime, float, integer } = require('enotype');
 const moment = require('moment');
 const path = require('path');
+
+enolib.register({ datetime, float, integer });
 
 const results = {
   'JavaScript': {
@@ -21,31 +24,31 @@ let previousIterations;
 
 for(language of Object.keys(results)) {
   const input = fs.readFileSync(path.join(__dirname, `reports/${language.toLowerCase()}.eno`), 'utf-8');
-  const report = eno.parse(input, { reporter: TerminalReporter });
+  const report = enolib.parse(input, { reporter: TerminalReporter });
   const body = report.section(language.toLowerCase());
 
-  const iterations = body.integer('iterations');
+  const iterations = body.field('iterations').requiredIntegerValue();
   if(previousIterations && iterations !== previousIterations) {
-    throw body.element('iterations').error(`This benchmark has a different number of iterations (${iterations}) than one of the others (${previousIterations}).`);
+    throw body.field('iterations').error(`This benchmark has a different number of iterations (${iterations}) than one of the others (${previousIterations}).`);
   } else {
     previousIterations = iterations;
   }
 
-  results[language].evaluated = body.datetime('evaluated', { required: true });
-  results[language].runtime = body.string('runtime', { required: true });
+  results[language].evaluated = body.field('evaluated').requiredDatetimeValue();
+  results[language].runtime = body.field('runtime').requiredStringValue();
 
   for(let element of body.elements()) {
     if(!(element instanceof Section)) continue;
 
-    const scenario = element.name;
+    const scenario = element.stringKey();
 
     results[language].scenarios[scenario] = [];
 
     for(let benchmark of element.elements()) {
-      const time = benchmark.float();
+      const time = benchmark.requiredFloatValue();
 
       results[language].scenarios[scenario].push({
-        library: benchmark.name,
+        library: benchmark.stringKey(),
         time: time
       });
 
