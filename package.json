@@ -1,8 +1,8 @@
 {
   "author": "Simon Repp <simon@fdpl.io>",
   "dependencies": {
-    "enolib": "^0.1.0",
-    "enotype": "^0.1.0",
+    "enolib": "^0.3.5",
+    "enotype": "^0.3.0",
     "js-yaml": "^3.12.2",
     "moment": "^2.24.0",
     "toml": "^3.0.0",
