@@ -26,11 +26,11 @@ class PythonReport:
 
   def __init__(self):
     self.report = f"""
-# python
-
 evaluated: {datetime.utcnow().replace(microsecond=0, tzinfo=timezone.utc).isoformat()}
 iterations: {self.ITERATIONS}
 runtime: {python_implementation()} {python_version()} [{platform()}]
+
+# scenarios
     """.lstrip()
 
   def generate(self):
@@ -43,13 +43,13 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/abstract_hierarchy/hierarchy.yaml') as file:
       yaml_hierarchy = file.read()
 
-    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_hierarchy))
-    self.benchmark('pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_hierarchy), 10)
-    self.benchmark('pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_hierarchy, Loader=yaml.CLoader))
-    self.benchmark('qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_hierarchy))
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_hierarchy))
-    self.benchmark('toml', TOML_VERSION, lambda: toml.loads(toml_hierarchy))
-    self.benchmark('tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_hierarchy), 10)
+    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_hierarchy))
+    self.benchmark('[-] pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_hierarchy), 10)
+    self.benchmark('[-] pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_hierarchy, Loader=yaml.CLoader))
+    self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_hierarchy))
+    self.benchmark('[-] ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_hierarchy))
+    self.benchmark('[-] toml', TOML_VERSION, lambda: toml.loads(toml_hierarchy))
+    self.benchmark('[-] tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_hierarchy), 10)
 
 
     self.scenario('content_heavy')
@@ -61,13 +61,13 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/content_heavy/content.yaml') as file:
       yaml_content = file.read()
 
-    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_content))
-    self.benchmark('pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_content), 100)
-    self.benchmark('pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_content, Loader=yaml.CLoader))
-    self.benchmark('qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_content), 100)
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_content))
-    self.benchmark('toml', TOML_VERSION, lambda: toml.loads(toml_content), 10)
-    self.benchmark('tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_content), 100)
+    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_content))
+    self.benchmark('[-] pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_content), 100)
+    self.benchmark('[-] pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_content, Loader=yaml.CLoader))
+    self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_content), 100)
+    self.benchmark('[-] ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_content))
+    self.benchmark('[-] toml', TOML_VERSION, lambda: toml.loads(toml_content), 10)
+    self.benchmark('[-] tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_content), 100)
 
 
     self.scenario('invented_server_configuration')
@@ -79,13 +79,13 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/invented_server_configuration/configuration.yaml') as file:
       yaml_configuration = file.read()
 
-    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_configuration))
-    self.benchmark('pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_configuration), 10)
-    self.benchmark('pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_configuration, Loader=yaml.CLoader))
-    self.benchmark('qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_configuration))
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_configuration))
-    self.benchmark('toml', TOML_VERSION, lambda: toml.loads(toml_configuration))
-    self.benchmark('tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_configuration), 10)
+    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_configuration))
+    self.benchmark('[-] pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_configuration), 10)
+    self.benchmark('[-] pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_configuration, Loader=yaml.CLoader))
+    self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_configuration))
+    self.benchmark('[-] ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_configuration))
+    self.benchmark('[-] toml', TOML_VERSION, lambda: toml.loads(toml_configuration))
+    self.benchmark('[-] tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_configuration), 10)
 
     self.scenario('jekyll_post_example')
 
@@ -96,13 +96,13 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/jekyll_post_example/post.yaml') as file:
       yaml_post = file.read()
 
-    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_post))
-    self.benchmark('pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_post), 10)
-    self.benchmark('pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_post, Loader=yaml.CLoader))
-    self.benchmark('qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_post))
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_post))
-    self.benchmark('toml', TOML_VERSION, lambda: toml.loads(toml_post))
-    self.benchmark('tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_post), 10)
+    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_post))
+    self.benchmark('[-] pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_post), 10)
+    self.benchmark('[-] pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_post, Loader=yaml.CLoader))
+    self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_post))
+    self.benchmark('[-] ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_post))
+    self.benchmark('[-] toml', TOML_VERSION, lambda: toml.loads(toml_post))
+    self.benchmark('[-] tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_post), 10)
 
     self.scenario('journey_route_data')
 
@@ -113,13 +113,13 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/journey_route_data/journey.yaml') as file:
       yaml_journey = file.read()
 
-    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_journey))
-    self.benchmark('pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_journey), 10)
-    self.benchmark('pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_journey, Loader=yaml.CLoader))
-    self.benchmark('qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_journey), 10)
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_journey), 10)
-    self.benchmark('toml', TOML_VERSION, lambda: toml.loads(toml_journey))
-    self.benchmark('tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_journey), 10)
+    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_journey))
+    self.benchmark('[-] pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_journey), 10)
+    self.benchmark('[-] pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_journey, Loader=yaml.CLoader))
+    self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_journey), 10)
+    self.benchmark('[-] ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_journey), 10)
+    self.benchmark('[-] toml', TOML_VERSION, lambda: toml.loads(toml_journey))
+    self.benchmark('[-] tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_journey), 10)
 
     self.scenario('yaml_invoice_example')
 
@@ -130,19 +130,19 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/yaml_invoice_example/invoice.yaml') as file:
       yaml_invoice = file.read()
 
-    self.benchmark('enopy', ENOPY_VERSION, lambda: enopy.parse(eno_invoice))
-    self.benchmark('pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_invoice), 10)
-    self.benchmark('pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_invoice, Loader=yaml.CLoader))
-    self.benchmark('qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_invoice), 10)
-    self.benchmark('ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_invoice))
-    self.benchmark('toml', TOML_VERSION, lambda: toml.loads(toml_invoice))
-    self.benchmark('tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_invoice), 10)
+    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_invoice))
+    self.benchmark('[-] pyyaml (default)', PYYAML_VERSION, lambda: yaml.load(yaml_invoice), 10)
+    self.benchmark('[-] pyyaml (libyaml)', PYYAML_VERSION, lambda: yaml.load(yaml_invoice, Loader=yaml.CLoader))
+    self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_invoice), 10)
+    self.benchmark('[-] ruamel.yaml', RUAMEL_YAML_VERSION, lambda: ruamel.load(yaml_invoice))
+    self.benchmark('[-] toml', TOML_VERSION, lambda: toml.loads(toml_invoice))
+    self.benchmark('[-] tomlkit', TOMLKIT_VERSION, lambda: tomlkit.parse(toml_invoice), 10)
 
     with open('reports/python.eno', 'w') as file:
       file.write(self.report)
 
   def scenario(self, file):
-    self.report += f"\n## {file}\n\n"
+    self.report += f"\n{file}:\n"
 
     print(file)
 
@@ -157,7 +157,7 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     duration = after - before
     duration_normalized = (after - before) * iteration_cutback_factor
 
-    self.report += f"{library} {version}: {duration_normalized}\n"
+    self.report += f"{library} {version} = {duration_normalized}\n"
 
     if iteration_cutback_factor > 1:
       print(f"\x1b[33m{library} - {int(iterations/1000)}k iterations => {duration} seconds / {duration_normalized} normalized seconds\x1b[0m")

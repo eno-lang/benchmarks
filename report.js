@@ -22,29 +22,28 @@ const results = {
 let maxTime = 0;
 let previousIterations;
 
-for(language of Object.keys(results)) {
-  const input = fs.readFileSync(path.join(__dirname, `reports/${language.toLowerCase()}.eno`), 'utf-8');
-  const report = enolib.parse(input, { reporter: TerminalReporter });
-  const body = report.section(language.toLowerCase());
+for(const language of Object.keys(results)) {
+  const file = path.join(__dirname, `reports/${language.toLowerCase()}.eno`);
+  const input = fs.readFileSync(file, 'utf-8');
+  const document = enolib.parse(input, { reporter: TerminalReporter, source: file });
 
-  const iterations = body.field('iterations').requiredIntegerValue();
+  const iterations = document.field('iterations').requiredIntegerValue();
+
   if(previousIterations && iterations !== previousIterations) {
-    throw body.field('iterations').error(`This benchmark has a different number of iterations (${iterations}) than one of the others (${previousIterations}).`);
+    throw document.field('iterations').error(`This benchmark has a different number of iterations (${iterations}) than one of the others (${previousIterations}).`);
   } else {
     previousIterations = iterations;
   }
 
-  results[language].evaluated = body.field('evaluated').requiredDatetimeValue();
-  results[language].runtime = body.field('runtime').requiredStringValue();
+  results[language].evaluated = document.field('evaluated').requiredDatetimeValue();
+  results[language].runtime = document.field('runtime').requiredStringValue();
 
-  for(let element of body.elements()) {
-    if(!(element instanceof Section)) continue;
-
-    const scenario = element.stringKey();
+  for(const scenarioFieldset of document.requiredSection('scenarios').fieldsets()) {
+    const scenario = scenarioFieldset.stringKey();
 
     results[language].scenarios[scenario] = [];
 
-    for(let benchmark of element.elements()) {
+    for(const benchmark of scenarioFieldset.entries()) {
       const time = benchmark.requiredFloatValue();
 
       results[language].scenarios[scenario].push({
@@ -181,7 +180,7 @@ extrapolated for the global comparison again.
 **(\\*\\*\\*)**: In the enolib/enopy/enorb libraries a document is validated through querying.
 If the whole document is queried, the whole document is validated. If only a portion of the document is queried
 less validation and less memory allocation happens and the performance thereby increases too. The results displayed
-here represent the (performance-wise worst) case of using all data present in a document. 
+here represent the (performance-wise worst) case of using all data present in a document.
 `;
 
 fs.writeFileSync(path.join(__dirname, 'README.md'), report);

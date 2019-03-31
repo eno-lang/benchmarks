@@ -19,15 +19,15 @@ enolib.register({ boolean, date, datetime, float, integer });
 let enoInput, mdInput, tomlInput, yamlInput;
 
 let report = `
-# javascript
-
 evaluated: ${(new Date()).toISOString().replace(/\.[0-9]{3}/, '')}
 iterations: ${ITERATIONS}
 runtime: node ${process.version} [${process.platform}-${process.arch}]
+
+# scenarios
 `.trimStart();
 
 const scenario = (file) => {
-  report += `\n## ${file}\n\n`;
+  report += `\n${file}:\n`;
 
   console.log(file);
 };
@@ -43,7 +43,7 @@ const benchmark = (library, version, perform, iteration_cutback_factor = 1) => {
   const duration = ((after - before) / 1000.0);
   const durationNormalized = duration * iteration_cutback_factor;
 
-  report += `${library} ${version}: ${durationNormalized}\n`;
+  report += `${library} ${version} = ${durationNormalized}\n`;
 
   if(iteration_cutback_factor > 1) {
     console.log(`\x1b[33m${library} - ${iterations / 1000}k iterations => ${duration} seconds / ${durationNormalized} normalized seconds\x1b[0m`);
@@ -59,8 +59,8 @@ const enoHierarchy = fs.readFileSync(path.join(__dirname, 'samples/abstract_hier
 const yamlHierarchy = fs.readFileSync(path.join(__dirname, 'samples/abstract_hierarchy/hierarchy.yaml'), 'utf-8');
 const tomlHierarchy = fs.readFileSync(path.join(__dirname, 'samples/abstract_hierarchy/hierarchy.toml'), 'utf-8');
 
-benchmark('enolib', enolibVersion, () => enolib.parse(enoHierarchy));
-benchmark('enolib (with full validation)', enolibVersion, () => {
+benchmark('[-] enolib', enolibVersion, () => enolib.parse(enoHierarchy));
+benchmark('[✓] enolib', enolibVersion, () => {
   const document = enolib.parse(enoHierarchy);
   const doc = document.section('doc');
   doc.list('colors').requiredStringValues();
@@ -77,9 +77,9 @@ benchmark('enolib (with full validation)', enolibVersion, () => {
   const deepest = deeper.section('deep');
   deepest.field('sea').requiredStringValue();
 });
-benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlHierarchy));
-benchmark('toml', tomlVersion, () => toml.parse(tomlHierarchy), 10);
-benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlHierarchy));
+benchmark('[-] js-yaml', jsYamlVersion, () => jsYaml.load(yamlHierarchy));
+benchmark('[-] toml', tomlVersion, () => toml.parse(tomlHierarchy), 10);
+benchmark('[-] toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlHierarchy));
 
 
 scenario('content_heavy');
@@ -88,13 +88,13 @@ const enoContent = fs.readFileSync(path.join(__dirname, 'samples/content_heavy/c
 const yamlContent = fs.readFileSync(path.join(__dirname, 'samples/content_heavy/content.yaml'), 'utf-8');
 const tomlContent = fs.readFileSync(path.join(__dirname, 'samples/content_heavy/content.toml'), 'utf-8');
 
-benchmark('enolib', enolibVersion, () => enolib.parse(enoContent));
-benchmark('enolib (with full validation)', enolibVersion, () => {
+benchmark('[-] enolib', enolibVersion, () => enolib.parse(enoContent));
+benchmark('[✓] enolib', enolibVersion, () => {
   enolib.parse(enoContent).field('content').requiredStringValue();
 });
-benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlContent));
-benchmark('toml', tomlVersion, () => toml.parse(tomlContent), 100);
-benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlContent), 10);
+benchmark('[-] js-yaml', jsYamlVersion, () => jsYaml.load(yamlContent));
+benchmark('[-] toml', tomlVersion, () => toml.parse(tomlContent), 100);
+benchmark('[-] toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlContent), 10);
 
 
 scenario('invented_server_configuration');
@@ -103,11 +103,11 @@ const enoConfiguration = fs.readFileSync(path.join(__dirname, 'samples/invented_
 const yamlConfiguration = fs.readFileSync(path.join(__dirname, 'samples/invented_server_configuration/configuration.yaml'), 'utf-8');
 const tomlConfiguration = fs.readFileSync(path.join(__dirname, 'samples/invented_server_configuration/configuration.toml'), 'utf-8');
 
-benchmark('enolib', enolibVersion, () => enolib.parse(enoConfiguration));
-benchmark('enolib (with full validation)', enolibVersion, () => {
+benchmark('[-] enolib', enolibVersion, () => enolib.parse(enoConfiguration));
+benchmark('[✓] enolib', enolibVersion, () => {
   const document = enolib.parse(enoConfiguration);
-  for(const environment of document.elements()) {
-    for(const server of environment.elements()) {
+  for(const environment of document.sections()) {
+    for(const server of environment.sections()) {
       const conf = server.fieldset('conf');
       conf.entry('ruby').requiredBooleanValue();
       conf.entry('python').requiredBooleanValue();
@@ -116,9 +116,9 @@ benchmark('enolib (with full validation)', enolibVersion, () => {
     }
   }
 });
-benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlConfiguration));
-benchmark('toml', tomlVersion, () => toml.parse(tomlConfiguration), 10);
-benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlConfiguration));
+benchmark('[-] js-yaml', jsYamlVersion, () => jsYaml.load(yamlConfiguration));
+benchmark('[-] toml', tomlVersion, () => toml.parse(tomlConfiguration), 10);
+benchmark('[-] toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlConfiguration));
 
 
 scenario('jekyll_post_example');
@@ -127,8 +127,8 @@ const enoPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_exampl
 const tomlPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.toml'), 'utf-8');
 const yamlPost = fs.readFileSync(path.join(__dirname, 'samples/jekyll_post_example/post.yaml'), 'utf-8');
 
-benchmark('enolib', enolibVersion, () => enolib.parse(enoPost));
-benchmark('enolib (with full validation)', enolibVersion, () => {
+benchmark('[-] enolib', enolibVersion, () => enolib.parse(enoPost));
+benchmark('[✓] enolib', enolibVersion, () => {
   const document = enolib.parse(enoPost);
   document.field('layout').requiredStringValue();
   document.field('title').requiredStringValue();
@@ -136,9 +136,9 @@ benchmark('enolib (with full validation)', enolibVersion, () => {
   document.field('categories').requiredStringValue();
   document.field('markdown').requiredStringValue();
 });
-benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlPost));
-benchmark('toml', tomlVersion, () => toml.parse(tomlPost), 10);
-benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlPost));
+benchmark('[-] js-yaml', jsYamlVersion, () => jsYaml.load(yamlPost));
+benchmark('[-] toml', tomlVersion, () => toml.parse(tomlPost), 10);
+benchmark('[-] toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlPost));
 
 
 scenario('journey_route_data');
@@ -147,8 +147,8 @@ const enoJourney = fs.readFileSync(path.join(__dirname, 'samples/journey_route_d
 const yamlJourney = fs.readFileSync(path.join(__dirname, 'samples/journey_route_data/journey.yaml'), 'utf-8');
 const tomlJourney = fs.readFileSync(path.join(__dirname, 'samples/journey_route_data/journey.toml'), 'utf-8');
 
-benchmark('enolib', enolibVersion, () => enolib.parse(enoJourney));
-benchmark('enolib (with full validation)', enolibVersion, () => {
+benchmark('[-] enolib', enolibVersion, () => enolib.parse(enoJourney));
+benchmark('[✓] enolib', enolibVersion, () => {
   const document = enolib.parse(enoJourney);
   document.field('title').requiredStringValue();
   document.field('date').requiredDateValue();
@@ -167,9 +167,9 @@ benchmark('enolib (with full validation)', enolibVersion, () => {
     }
   }
 });
-benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlJourney));
-benchmark('toml', tomlVersion, () => toml.parse(tomlJourney), 10);
-benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlJourney));
+benchmark('[-] js-yaml', jsYamlVersion, () => jsYaml.load(yamlJourney));
+benchmark('[-] toml', tomlVersion, () => toml.parse(tomlJourney), 10);
+benchmark('[-] toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlJourney));
 
 
 scenario('yaml_invoice_example');
@@ -178,8 +178,8 @@ const enoInvoice = fs.readFileSync(path.join(__dirname, 'samples/yaml_invoice_ex
 const yamlInvoice = fs.readFileSync(path.join(__dirname, 'samples/yaml_invoice_example/invoice.yaml'), 'utf-8');
 const tomlInvoice = fs.readFileSync(path.join(__dirname, 'samples/yaml_invoice_example/invoice.toml'), 'utf-8');
 
-benchmark('enolib', enolibVersion, () => enolib.parse(enoInvoice));
-benchmark('enolib (with full validation)', enolibVersion, () => {
+benchmark('[-] enolib', enolibVersion, () => enolib.parse(enoInvoice));
+benchmark('[✓] enolib', enolibVersion, () => {
   const document = enolib.parse(enoInvoice);
   document.field('invoice').requiredIntegerValue();
   document.field('date').requiredDateValue();
@@ -203,9 +203,9 @@ benchmark('enolib (with full validation)', enolibVersion, () => {
     product.field('price').requiredStringValue();
   }
 });
-benchmark('js-yaml', jsYamlVersion, () => jsYaml.load(yamlInvoice));
-benchmark('toml', tomlVersion, () => toml.parse(tomlInvoice));
-benchmark('toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlInvoice));
+benchmark('[-] js-yaml', jsYamlVersion, () => jsYaml.load(yamlInvoice));
+benchmark('[-] toml', tomlVersion, () => toml.parse(tomlInvoice));
+benchmark('[-] toml-j0.4', tomlJ04Version, () => tomlJ04.parse(tomlInvoice));
 
 
 fs.writeFileSync(path.join(__dirname, 'reports/javascript.eno'), report);
