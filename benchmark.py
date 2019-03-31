@@ -1,9 +1,12 @@
 import pkg_resources, time
-from datetime import datetime, timezone
+from datetime import datetime as python_datetime, timezone
 from platform import platform, python_implementation, python_version
 
-import enopy
-ENOPY_VERSION = pkg_resources.get_distribution('enopy').version
+import enolib
+ENOLIB_VERSION = pkg_resources.get_distribution('enolib').version
+
+from enotype import boolean, date, datetime, float, integer
+enolib.register(boolean, date, datetime, float, integer)
 
 import qtoml
 QTOML_VERSION = pkg_resources.get_distribution('qtoml').version
@@ -26,7 +29,7 @@ class PythonReport:
 
   def __init__(self):
     self.report = f"""
-evaluated: {datetime.utcnow().replace(microsecond=0, tzinfo=timezone.utc).isoformat()}
+evaluated: {python_datetime.utcnow().replace(microsecond=0, tzinfo=timezone.utc).isoformat()}
 iterations: {self.ITERATIONS}
 runtime: {python_implementation()} {python_version()} [{platform()}]
 
@@ -43,7 +46,25 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/abstract_hierarchy/hierarchy.yaml') as file:
       yaml_hierarchy = file.read()
 
-    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_hierarchy))
+    def eno_hierarchy_query():
+      document = enolib.parse(eno_hierarchy)
+      doc = document.section('doc')
+      doc.list('colors').required_string_values()
+      traits = doc.fieldset('traits')
+      traits.entry('tired').required_string_value()
+      traits.entry('extroverted').required_string_value()
+      traits.entry('funny').required_string_value()
+      traits.entry('inventive').required_string_value()
+      doc.list('things').required_string_values()
+      deep = doc.section('deep')
+      deep.field('sea').required_string_value()
+      deeper = deep.section('deep')
+      deeper.field('sea').required_string_value()
+      deepest = deeper.section('deep')
+      deepest.field('sea').required_string_value()
+
+    self.benchmark('[-] enolib', ENOLIB_VERSION, lambda: enolib.parse(eno_hierarchy))
+    self.benchmark('[✓] enolib', ENOLIB_VERSION, eno_hierarchy_query)
     self.benchmark('[-] pyyaml (FullLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_hierarchy, Loader=yaml.FullLoader), 10)
     self.benchmark('[-] pyyaml (CLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_hierarchy, Loader=yaml.CLoader))
     self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_hierarchy))
@@ -61,7 +82,11 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/content_heavy/content.yaml') as file:
       yaml_content = file.read()
 
-    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_content))
+    def eno_content_query():
+      enolib.parse(eno_content).field('content').required_string_value()
+
+    self.benchmark('[-] enolib', ENOLIB_VERSION, lambda: enolib.parse(eno_content))
+    self.benchmark('[✓] enolib', ENOLIB_VERSION, eno_content_query)
     self.benchmark('[-] pyyaml (FullLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_content, Loader=yaml.FullLoader), 100)
     self.benchmark('[-] pyyaml (CLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_content, Loader=yaml.CLoader))
     self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_content), 100)
@@ -79,7 +104,18 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/invented_server_configuration/configuration.yaml') as file:
       yaml_configuration = file.read()
 
-    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_configuration))
+    def eno_configuration_query():
+      document = enolib.parse(eno_configuration)
+      for environment in document.sections():
+        for server in environment.sections():
+          conf = server.fieldset('conf')
+          conf.entry('ruby').required_boolean_value()
+          conf.entry('python').required_boolean_value()
+          server.field('clean').required_boolean_value()
+          server.list('steps').required_string_values()
+
+    self.benchmark('[-] enolib', ENOLIB_VERSION, lambda: enolib.parse(eno_configuration))
+    self.benchmark('[✓] enolib', ENOLIB_VERSION, eno_configuration_query)
     self.benchmark('[-] pyyaml (FullLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_configuration, Loader=yaml.FullLoader), 10)
     self.benchmark('[-] pyyaml (CLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_configuration, Loader=yaml.CLoader))
     self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_configuration))
@@ -96,7 +132,16 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/jekyll_post_example/post.yaml') as file:
       yaml_post = file.read()
 
-    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_post))
+    def eno_post_query():
+      document = enolib.parse(eno_post)
+      document.field('layout').required_string_value()
+      document.field('title').required_string_value()
+      document.field('date').required_datetime_value()
+      document.field('categories').required_string_value()
+      document.field('markdown').required_string_value()
+
+    self.benchmark('[-] enolib', ENOLIB_VERSION, lambda: enolib.parse(eno_post))
+    self.benchmark('[✓] enolib', ENOLIB_VERSION, eno_post_query)
     self.benchmark('[-] pyyaml (FullLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_post, Loader=yaml.FullLoader), 10)
     self.benchmark('[-] pyyaml (CLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_post, Loader=yaml.CLoader))
     self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_post))
@@ -113,7 +158,25 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/journey_route_data/journey.yaml') as file:
       yaml_journey = file.read()
 
-    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_journey))
+    def eno_journey_query():
+      document = enolib.parse(eno_journey)
+      document.field('title').required_string_value()
+      document.field('date').required_date_value()
+      document.field('time').required_string_value()
+      document.field('abstract').required_string_value()
+      for checkpoint in document.sections('checkpoint'):
+        checkpoint.field('coordinates').required_string_value()
+        checkpoint.field('hint').optional_string_value()
+        checkpoint.field('special').optional_string_value()
+        checkpoint.field('location').required_string_value()
+        safezone = checkpoint.optional_section('safezone')
+        if safezone:
+          safezone.field('shape').required_string_value()
+          safezone.field('center').required_string_value()
+          safezone.field('radius').required_integer_value()
+
+    self.benchmark('[-] enolib', ENOLIB_VERSION, lambda: enolib.parse(eno_journey))
+    self.benchmark('[✓] enolib', ENOLIB_VERSION, eno_journey_query)
     self.benchmark('[-] pyyaml (FullLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_journey, Loader=yaml.FullLoader), 10)
     self.benchmark('[-] pyyaml (CLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_journey, Loader=yaml.CLoader))
     self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_journey), 10)
@@ -130,7 +193,30 @@ runtime: {python_implementation()} {python_version()} [{platform()}]
     with open('samples/yaml_invoice_example/invoice.yaml') as file:
       yaml_invoice = file.read()
 
-    self.benchmark('[-] enopy', ENOPY_VERSION, lambda: enopy.parse(eno_invoice))
+    def eno_invoice_query():
+      document = enolib.parse(eno_invoice)
+      document.field('invoice').required_integer_value()
+      document.field('date').required_date_value()
+      document.field('tax').required_float_value()
+      document.field('total').required_float_value()
+      document.field('comments').required_string_value()
+      for type in ['bill-to', 'ship-to']:
+        contact = document.section(type)
+        contact.field('given').required_string_value()
+        contact.field('family').required_string_value()
+        address = contact.section('address')
+        address.field('lines').required_string_value()
+        address.field('city').required_string_value()
+        address.field('state').required_string_value()
+        address.field('postal').required_string_value()
+      for product in document.sections('product'):
+        product.field('sku').required_string_value()
+        product.field('quantity').required_integer_value()
+        product.field('description').required_string_value()
+        product.field('price').required_string_value()
+
+    self.benchmark('[-] enolib', ENOLIB_VERSION, lambda: enolib.parse(eno_invoice))
+    self.benchmark('[✓] enolib', ENOLIB_VERSION, eno_invoice_query)
     self.benchmark('[-] pyyaml (FullLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_invoice, Loader=yaml.FullLoader), 10)
     self.benchmark('[-] pyyaml (CLoader)', PYYAML_VERSION, lambda: yaml.load(yaml_invoice, Loader=yaml.CLoader))
     self.benchmark('[-] qtoml', QTOML_VERSION, lambda: qtoml.loads(toml_invoice), 10)
