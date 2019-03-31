@@ -61,31 +61,23 @@ for(const language of Object.keys(results)) {
 let report = `
 # Benchmarks
 
-This report was generated on **${moment().format('MMMM Do YYYY')}**.
+**Last updated ${moment().format('MMMM Do, YYYY')}**
 
-These are benchmarks to evaluate the performance of all current eno library
-implementations in comparism to each other, as well as in comparism to the most
-popular yaml/toml parsers out there.
-
-As with all statistics please take these findings with a grain of salt,
-and feel warmly invited to re-run these benchmarks or point out flaws and
-possible improvements to the methodology and code.
-
-## How the data is gathered
-
-To get an impression how the measurements were obtained, please take a look at the source of \`benchmark.js/py/rb\` inside this repository.
-To get an impression how the report was compiled, please study \`report.js\` inside this repository.
+These benchmarks evaluate the performance of all enolib implementations,
+compared also to the most popular yaml/toml parsers out there. As with all
+statistics please take these findings with a grain of salt, and feel invited to
+re-run these benchmarks or point out flaws and possible improvements to the
+methodology and code (some instructions are provided below the results).
 
 Benchmarks are currently performed on Ubuntu 18.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 (see language sections below for detailed runtime info).
 `;
 
 report += `
 ## Graphical results
-(A numbers-only table report is provided further down)
 
-**[-]** indicates a pure **parsing** run with unsafe results. **(\\*\\*)**
+**[-]** indicates a pure **parsing** run with unsafe results. **(\\*)**
 
-**[✓]** indicates a benchmark for **parsing plus querying and validating** the whole document. **(\\*\\*\\*)**
+**[✓]** indicates a benchmark for **parsing plus querying and validating** the whole document. **(\\*\\*)**
 
 **░░ 0.123** Shorter bars/numbers indicate **better performance**.
 
@@ -104,7 +96,7 @@ Evaluated in **${languageData.runtime}** on **${moment(languageData.evaluated).f
   for(let [scenario, benchmarks] of Object.entries(languageData.scenarios)) {
     report += `\n#### *${scenario}*\n\n&nbsp;  \n\`\`\`\n`;
 
-    report += 'VAL LIBRARY'.padEnd(25) + ' NUMBER OF SECONDS FOR 100K (*) ITERATIONS\n\n';
+    report += 'VAL LIBRARY'.padEnd(25) + ' NUMBER OF SECONDS FOR 100K (***) ITERATIONS\n\n';
 
     let offTheScale = false;
     for(let benchmark of benchmarks) {
@@ -113,15 +105,15 @@ Evaluated in **${languageData.runtime}** on **${moment(languageData.evaluated).f
       const block = isEno ? '▓' : '░';
 
       if(bar < 60) {
-        report += `${benchmark.library.padEnd(25)} [${block.repeat(bar)}] ${benchmark.time.toFixed(3)} seconds\n`;
+        report += `${benchmark.library.padEnd(28)} [${block.repeat(bar)}] ${benchmark.time.toFixed(3)} seconds\n`;
       } else {
         if(!offTheScale) {
-          report += '\n' + '...  ...'.padEnd(25) + ' OFF THE SCALE\n\n';
+          report += '\n' + '...  ...'.padEnd(28) + ' OFF THE SCALE\n\n';
           offTheScale = true;
         }
 
         const minutes = Math.round(bar/60);
-        report += `${benchmark.library.padEnd(25)} ${minutes}+ minutes\n`;
+        report += `${benchmark.library.padEnd(28)} ${minutes}+ minutes\n`;
       }
 
     }
@@ -134,9 +126,9 @@ Evaluated in **${languageData.runtime}** on **${moment(languageData.evaluated).f
 report += `
 ## Numerical results
 
-**[-]** indicates a pure **parsing** run with unsafe results. **(\\*\\*)**
+**[-]** indicates a pure **parsing** run with unsafe results. **(\\*)**
 
-**[✓]** indicates a benchmark for **parsing plus querying and validating** the whole document. **(\\*\\*\\*)**
+**[✓]** indicates a benchmark for **parsing plus querying and validating** the whole document. **(\\*\\*)**
 
 **0.123** Smaller numbers indicate **better performance**.
 
@@ -155,7 +147,7 @@ Evaluated in **${languageData.runtime}** on **${moment(languageData.evaluated).f
   for(let [scenario, benchmarks] of Object.entries(languageData.scenarios)) {
     report += `\n#### *${scenario}*\n\n`;
 
-    report += `| Library | Number of seconds for 100k (*) iterations |\n`;
+    report += `| Library | Number of seconds for 100k (***) iterations |\n`;
     report += `| ------- | ------------------------------------- |\n`;
 
     for(let benchmark of benchmarks) {
@@ -168,19 +160,25 @@ Evaluated in **${languageData.runtime}** on **${moment(languageData.evaluated).f
 report += `
 ---
 
+## How the data is gathered
+
+To see how the measurements were obtained, please take a look at the source of \`benchmark.js/py/rb\` inside this repository.
+To see how the report was compiled, please study \`report.js\` inside this repository.
+
+
 ## Notes
 
-**(\\*)**: Some libraries included in the benchmarks exhibit an up to 1000x
-slower performance compared to the top ranking parsers, these have been
-partially sampled with up to only 1k iterations, with the total duration
-extrapolated for the global comparison again.
+**(\\*)**: The majority of YAML/TOML parsers produce plain object dumps which are inherently unvalidated.
 
-**(\\*\\*)**: The majority of YAML/TOML parsers produce plain object dumps which are inherently unvalidated.
-
-**(\\*\\*\\*)**: In the enolib/enopy/enorb libraries a document is validated through querying.
+**(\\*\\*)**: In the enolib libraries a document is validated through querying.
 If the whole document is queried, the whole document is validated. If only a portion of the document is queried
 less validation and less memory allocation happens and the performance thereby increases too. The results displayed
 here represent the (performance-wise worst) case of using all data present in a document.
+
+**(\\*\\*\\*)**: Some libraries included in the benchmarks exhibit an up to 1000x
+slower performance compared to the top ranking parsers, these have been
+partially sampled with up to only 1k iterations, with the total duration
+extrapolated for the global comparison again.
 `;
 
 fs.writeFileSync(path.join(__dirname, 'README.md'), report);
