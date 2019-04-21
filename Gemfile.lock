@@ -3,6 +3,7 @@ GEM
   specs:
     citrus (3.0.2)
     enolib (0.5.0)
+    enotype (0.3.0)
     parslet (1.8.2)
     toml (0.2.0)
       parslet (~> 1.8.0)
@@ -15,6 +16,7 @@ PLATFORMS
 
 DEPENDENCIES
   enolib
+  enotype
   toml
   toml-rb
   tomlrb

@@ -4,6 +4,15 @@ require 'time'
 require 'enolib'
 ENOLIB_VERSION = Gem.loaded_specs['enolib'].version
 
+require 'enotype'
+Enolib.register(
+  boolean: ->(value) { Enotype::boolean(value) },
+  date: ->(value) { Enotype::date(value) },
+  datetime: ->(value) { Enotype::datetime(value) },
+  float: ->(value) { Enotype::float(value) },
+  integer: ->(value) { Enotype::integer(value) }
+)
+
 require 'toml'
 TOML_VERSION = Gem.loaded_specs['toml'].version
 
@@ -56,6 +65,23 @@ class RubyReport
     yaml_hierarchy = File.read('samples/abstract_hierarchy/hierarchy.yaml')
 
     benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_hierarchy) }
+    benchmark('[✓] enolib', ENOLIB_VERSION) do
+      document = Enolib.parse(eno_hierarchy)
+      doc = document.section('doc')
+      doc.list('colors').required_string_values
+      traits = doc.fieldset('traits')
+      traits.entry('tired').required_string_value
+      traits.entry('extroverted').required_string_value
+      traits.entry('funny').required_string_value
+      traits.entry('inventive').required_string_value
+      doc.list('things').required_string_values
+      deep = doc.section('deep')
+      deep.field('sea').required_string_value
+      deeper = deep.section('deep')
+      deeper.field('sea').required_string_value
+      deepest = deeper.section('deep')
+      deepest.field('sea').required_string_value
+    end
     benchmark('[-] toml', TOML_VERSION, 10) { TOML.load(toml_hierarchy) }
     benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_hierarchy) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_hierarchy) }
@@ -69,6 +95,9 @@ class RubyReport
     yaml_content = File.read('samples/content_heavy/content.yaml')
 
     benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_content) }
+    benchmark('[✓] enolib', ENOLIB_VERSION) do
+      Enolib.parse(eno_content).field('content').required_string_value
+    end
     # benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_content) } ERRORS
     benchmark('[-] toml-rb', TOML_RB_VERSION, 100) { TomlRB.parse(toml_content) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_content) }
@@ -82,6 +111,18 @@ class RubyReport
     yaml_configuration = File.read('samples/invented_server_configuration/configuration.yaml')
 
     benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_configuration) }
+    benchmark('[✓] enolib', ENOLIB_VERSION) do
+      document = Enolib.parse(eno_configuration)
+      document.sections.each do |environment|
+        environment.sections.each do |server|
+          conf = server.fieldset('conf')
+          conf.entry('ruby').required_boolean_value
+          conf.entry('python').required_boolean_value
+          server.field('clean').required_boolean_value
+          server.list('steps').required_string_values
+        end
+      end
+    end
     benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_configuration) }
     benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_configuration) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_configuration) }
@@ -95,6 +136,14 @@ class RubyReport
     yaml_post = File.read('samples/jekyll_post_example/post.yaml')
 
     benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_post) }
+    benchmark('[✓] enolib', ENOLIB_VERSION) do
+      document = Enolib.parse(eno_post)
+      document.field('layout').required_string_value
+      document.field('title').required_string_value
+      document.field('date').required_datetime_value
+      document.field('categories').required_string_value
+      document.field('markdown').required_string_value
+    end
     # benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_post) } ERRORS
     benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_post) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_post) }
@@ -108,6 +157,25 @@ class RubyReport
     yaml_journey = File.read('samples/journey_route_data/journey.yaml')
 
     benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_journey) }
+    benchmark('[✓] enolib', ENOLIB_VERSION) do
+      document = Enolib.parse(eno_journey)
+      document.field('title').required_string_value
+      document.field('date').required_date_value
+      document.field('time').required_string_value
+      document.field('abstract').required_string_value
+      document.sections('checkpoint').each do |checkpoint|
+        checkpoint.field('coordinates').required_string_value
+        checkpoint.field('hint').optional_string_value
+        checkpoint.field('special').optional_string_value
+        checkpoint.field('location').required_string_value
+        safezone = checkpoint.optional_section('safezone')
+        if safezone
+          safezone.field('shape').required_string_value
+          safezone.field('center').required_string_value
+          safezone.field('radius').required_integer_value
+        end
+      end
+    end
     benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_journey) }
     benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_journey) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_journey) }
@@ -121,6 +189,30 @@ class RubyReport
     yaml_invoice = File.read('samples/yaml_invoice_example/invoice.yaml')
 
     benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_invoice) }
+    benchmark('[✓] enolib', ENOLIB_VERSION) do
+      document = Enolib.parse(eno_invoice)
+      document.field('invoice').required_integer_value
+      document.field('date').required_date_value
+      document.field('tax').required_float_value
+      document.field('total').required_float_value
+      document.field('comments').required_string_value
+      ['bill-to', 'ship-to'].each do |type|
+        contact = document.section(type)
+        contact.field('given').required_string_value
+        contact.field('family').required_string_value
+        address = contact.section('address')
+        address.field('lines').required_string_value
+        address.field('city').required_string_value
+        address.field('state').required_string_value
+        address.field('postal').required_string_value
+      end
+      document.sections('product').each do |product|
+        product.field('sku').required_string_value
+        product.field('quantity').required_integer_value
+        product.field('description').required_string_value
+        product.field('price').required_string_value
+      end
+    end
     # benchmark('[-] toml', TOML_VERSION) { TOML.load(toml_invoice) } ERRORS
     benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_invoice) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_invoice) }
