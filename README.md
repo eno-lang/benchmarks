@@ -9,7 +9,7 @@ statistics please take these findings with a grain of salt, and feel invited to
 re-run these benchmarks or point out flaws and possible improvements to the
 methodology and code (some instructions are provided below the results).
 
-Benchmarks are currently performed on Ubuntu 18.10 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 (see language sections below for detailed runtime info).
+Benchmarks are currently performed on Ubuntu 19.04 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 (see language sections below for detailed runtime info).
 
 ## Graphical results
 
