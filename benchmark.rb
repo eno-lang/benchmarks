@@ -1,8 +1,8 @@
 require 'benchmark'
 require 'time'
 
-require 'enorb'
-ENORB_VERSION = Gem.loaded_specs['enorb'].version
+require 'enolib'
+ENOLIB_VERSION = Gem.loaded_specs['enolib'].version
 
 require 'toml'
 TOML_VERSION = Gem.loaded_specs['toml'].version
@@ -55,7 +55,7 @@ class RubyReport
     toml_hierarchy = File.read('samples/abstract_hierarchy/hierarchy.toml')
     yaml_hierarchy = File.read('samples/abstract_hierarchy/hierarchy.yaml')
 
-    benchmark('[-] enorb', ENORB_VERSION) { Eno.parse(eno_hierarchy) }
+    benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_hierarchy) }
     benchmark('[-] toml', TOML_VERSION, 10) { TOML.load(toml_hierarchy) }
     benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_hierarchy) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_hierarchy) }
@@ -68,7 +68,7 @@ class RubyReport
     toml_content = File.read('samples/content_heavy/content.toml')
     yaml_content = File.read('samples/content_heavy/content.yaml')
 
-    benchmark('[-] enorb', ENORB_VERSION) { Eno.parse(eno_content) }
+    benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_content) }
     # benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_content) } ERRORS
     benchmark('[-] toml-rb', TOML_RB_VERSION, 100) { TomlRB.parse(toml_content) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_content) }
@@ -81,7 +81,7 @@ class RubyReport
     toml_configuration = File.read('samples/invented_server_configuration/configuration.toml')
     yaml_configuration = File.read('samples/invented_server_configuration/configuration.yaml')
 
-    benchmark('[-] enorb', ENORB_VERSION) { Eno.parse(eno_configuration) }
+    benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_configuration) }
     benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_configuration) }
     benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_configuration) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_configuration) }
@@ -94,7 +94,7 @@ class RubyReport
     toml_post = File.read('samples/jekyll_post_example/post.toml')
     yaml_post = File.read('samples/jekyll_post_example/post.yaml')
 
-    benchmark('[-] enorb', ENORB_VERSION) { Eno.parse(eno_post) }
+    benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_post) }
     # benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_post) } ERRORS
     benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_post) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_post) }
@@ -107,7 +107,7 @@ class RubyReport
     toml_journey = File.read('samples/journey_route_data/journey.toml')
     yaml_journey = File.read('samples/journey_route_data/journey.yaml')
 
-    benchmark('[-] enorb', ENORB_VERSION) { Eno.parse(eno_journey) }
+    benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_journey) }
     benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_journey) }
     benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_journey) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_journey) }
@@ -120,7 +120,7 @@ class RubyReport
     toml_invoice = File.read('samples/yaml_invoice_example/invoice.toml')
     yaml_invoice = File.read('samples/yaml_invoice_example/invoice.yaml')
 
-    benchmark('[-] enorb', ENORB_VERSION) { Eno.parse(eno_invoice) }
+    benchmark('[-] enolib', ENOLIB_VERSION) { Enolib.parse(eno_invoice) }
     # benchmark('[-] toml', TOML_VERSION) { TOML.load(toml_invoice) } ERRORS
     benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_invoice) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_invoice) }
