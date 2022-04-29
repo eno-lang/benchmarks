@@ -1,7 +1,7 @@
-enolib==0.5.0
+enolib==0.8.1
 enotype==0.3.0
-pyyaml==5.1
-qtoml==0.2.4
-ruamel.yaml==0.15.92
-toml==0.10.0
-tomlkit==0.5.3
+pyyaml==6.0
+qtoml==0.3.1
+ruamel.yaml==0.17.21
+toml==0.10.2
+tomlkit==0.10.2

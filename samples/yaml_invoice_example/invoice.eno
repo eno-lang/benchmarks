@@ -25,7 +25,21 @@ city: Royal Oak
 state: MI
 postal: 48046
 
-# ship-to < bill-to
+# ship-to
+
+given: Chris
+family: Dumars
+
+## address
+
+-- lines
+458 Walkman Dr.
+Suite #292
+-- lines
+
+city: Royal Oak
+state: MI
+postal: 48046
 
 # product
 
