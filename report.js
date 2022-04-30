@@ -90,7 +90,7 @@ Evaluated in **${languageData.runtime}** on **${formatDate(languageData.evaluate
     for (const [scenario, benchmarks] of Object.entries(languageData.scenarios)) {
         report += `\n#### *${scenario}*\n\n&nbsp;  \n\`\`\`\n`;
         
-        report += 'VAL LIBRARY'.padEnd(25) + ' NUMBER OF SECONDS FOR 100K (***) ITERATIONS\n\n';
+        report += 'VAL LIBRARY'.padEnd(28) + ' NUMBER OF SECONDS FOR 100K (***) ITERATIONS\n\n';
         
         let offTheScale = false;
         for (const benchmark of benchmarks) {
@@ -161,6 +161,11 @@ To see how the report was compiled, please study \`report.js\` inside this repos
 
 
 ## Notes
+
+As you might have noticed, the benchmark figures for ruby are occasionally
+missing one or two libraries for specific benchmarks – the reason for this is
+simply that these libraries failed on those respective benchmarks, either by
+raising an error or even by segfaulting.
 
 **(\\*)**: The majority of YAML/TOML parsers produce plain object dumps which are inherently unvalidated.
 

@@ -98,7 +98,7 @@ class RubyReport
     benchmark('[✓] enolib', ENOLIB_VERSION) do
       Enolib.parse(eno_content).field('content').required_string_value
     end
-    # benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_content) } ERRORS
+    # ERRORS benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_content) } 
     benchmark('[-] toml-rb', TOML_RB_VERSION, 100) { TomlRB.parse(toml_content) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_content) }
     benchmark('[-] yaml', YAML_VERSION) { YAML.load(yaml_content) }
@@ -144,8 +144,8 @@ class RubyReport
       document.field('categories').required_string_value
       document.field('markdown').required_string_value
     end
-    # benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_post) } ERRORS
-    benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_post) }
+    # ERRORS benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_post) }
+    # SEGFAULTS benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_post) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_post) }
     benchmark('[-] yaml', YAML_VERSION) { YAML.load(yaml_post) }
 
@@ -177,7 +177,7 @@ class RubyReport
       end
     end
     benchmark('[-] toml', TOML_VERSION, 100) { TOML.load(toml_journey) }
-    benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_journey) }
+    # SEGFAULTS benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_journey) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_journey) }
     benchmark('[-] yaml', YAML_VERSION) { YAML.load(yaml_journey) }
 
@@ -213,8 +213,8 @@ class RubyReport
         product.field('price').required_string_value
       end
     end
-    # benchmark('[-] toml', TOML_VERSION) { TOML.load(toml_invoice) } ERRORS
-    benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_invoice) }
+    # ERRORS benchmark('[-] toml', TOML_VERSION) { TOML.load(toml_invoice) } 
+    # SEGFAULTS benchmark('[-] toml-rb', TOML_RB_VERSION, 10) { TomlRB.parse(toml_invoice) }
     benchmark('[-] tomlrb', TOMLRB_VERSION) { Tomlrb.parse(toml_invoice) }
     benchmark('[-] yaml', YAML_VERSION) { YAML.load(yaml_invoice) }
 

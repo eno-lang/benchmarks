@@ -1,7 +1,6 @@
+# enolib benchmarks
 
-# Benchmarks
-
-**Last updated April 21st, 2019**
+**Last updated April 30, 2022**
 
 These benchmarks evaluate the performance of all enolib implementations,
 compared also to the most popular yaml/toml parsers out there. As with all
@@ -9,7 +8,7 @@ statistics please take these findings with a grain of salt, and feel invited to
 re-run these benchmarks or point out flaws and possible improvements to the
 methodology and code (some instructions are provided below the results).
 
-Benchmarks are currently performed on Ubuntu 19.04 on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 (see language sections below for detailed runtime info).
+Benchmarks are currently performed on Arch Linux on an Intel® Xeon(R) CPU E5-1650 v3 @ 3.50GHz × 12 (see language sections below for detailed runtime info).
 
 ## Graphical results
 
@@ -25,18 +24,18 @@ Each ░ represents one second.
 
 ### JavaScript
 
-Evaluated in **node v11.14.0 [linux-x64]** on **April 21st 2019**.
+Evaluated in **node v16.14.2 [linux-x64]** on **April 29, 2022**.
 
 #### *abstract_hierarchy*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓] 1.072 seconds
-[✓] enolib 0.5.0             [▓] 1.697 seconds
-[-] js-yaml 3.13.1           [░] 1.764 seconds
-[-] toml-j0.4 1.1.1          [░░░░░░] 6.425 seconds
+[-] enolib (git)             [] 0.991 seconds
+[✓] enolib (git)             [▓] 1.355 seconds
+[-] js-yaml 4.1.0            [░░] 2.113 seconds
+[-] toml-j0.4 1.1.1          [░░░░░] 5.836 seconds
 
 ...  ...                     OFF THE SCALE
 
@@ -47,44 +46,44 @@ VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [] 0.677 seconds
-[✓] enolib 0.5.0             [] 0.796 seconds
-[-] js-yaml 3.13.1           [░░░░░░░] 7.679 seconds
+[✓] enolib (git)             [] 0.621 seconds
+[-] enolib (git)             [] 0.653 seconds
+[-] js-yaml 4.1.0            [░░░░░░░░] 8.989 seconds
 
 ...  ...                     OFF THE SCALE
 
 [-] toml-j0.4 1.1.1          5+ minutes
-[-] toml 3.0.0               171+ minutes
+[-] toml 3.0.0               166+ minutes
 ```
 
 #### *invented_server_configuration*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓] 1.210 seconds
-[-] js-yaml 3.13.1           [░] 1.759 seconds
-[✓] enolib 0.5.0             [▓▓] 2.271 seconds
-[-] toml-j0.4 1.1.1          [░░░░░░░░░] 9.804 seconds
+[-] enolib (git)             [] 0.862 seconds
+[✓] enolib (git)             [▓] 1.232 seconds
+[-] js-yaml 4.1.0            [░░] 2.478 seconds
+[-] toml-j0.4 1.1.1          [░░░░░░░░] 8.671 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] toml 3.0.0               2+ minutes
+[-] toml 3.0.0               3+ minutes
 ```
 
 #### *jekyll_post_example*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [] 0.598 seconds
-[-] js-yaml 3.13.1           [] 0.920 seconds
-[✓] enolib 0.5.0             [▓] 1.055 seconds
-[-] toml-j0.4 1.1.1          [░░░░░░░░░░░] 11.599 seconds
+[-] enolib (git)             [] 0.516 seconds
+[✓] enolib (git)             [] 0.746 seconds
+[-] js-yaml 4.1.0            [░] 1.068 seconds
+[-] toml-j0.4 1.1.1          [░░░░░░░░░░░] 11.397 seconds
 
 ...  ...                     OFF THE SCALE
 
@@ -95,12 +94,12 @@ VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓] 2.381 seconds
-[-] js-yaml 3.13.1           [░░░░] 4.025 seconds
-[✓] enolib 0.5.0             [▓▓▓▓] 4.084 seconds
-[-] toml-j0.4 1.1.1          [░░░░░░░░░░░░░░░░] 16.047 seconds
+[-] enolib (git)             [▓▓] 2.375 seconds
+[✓] enolib (git)             [▓▓▓] 3.490 seconds
+[-] js-yaml 4.1.0            [░░░░] 4.431 seconds
+[-] toml-j0.4 1.1.1          [░░░░░░░░░░░░░] 13.878 seconds
 
 ...  ...                     OFF THE SCALE
 
@@ -111,12 +110,12 @@ VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓] 2.160 seconds
-[-] js-yaml 3.13.1           [░░] 2.933 seconds
-[✓] enolib 0.5.0             [▓▓▓] 3.881 seconds
-[-] toml-j0.4 1.1.1          [░░░░░░░░░░░░] 12.719 seconds
+[-] enolib (git)             [▓▓] 2.071 seconds
+[-] js-yaml 4.1.0            [░░░] 3.144 seconds
+[✓] enolib (git)             [▓▓▓] 3.323 seconds
+[-] toml-j0.4 1.1.1          [░░░░░░░░░░░] 11.032 seconds
 
 ...  ...                     OFF THE SCALE
 
@@ -125,223 +124,214 @@ VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
 ### Python
 
-Evaluated in **CPython 3.7.3 [Linux-5.0.0-13-generic-x86_64-with-Ubuntu-19.04-disco]** on **April 21st 2019**.
+Evaluated in **CPython 3.10.4 [Linux-5.17.4-arch1-1-x86_64-with-glibc2.35]** on **April 29, 2022**.
 
 #### *abstract_hierarchy*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓▓▓▓▓] 8.152 seconds
-[-] pyyaml (CLoader) 5.1     [░░░░░░░░░░░░░] 13.295 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 15.576 seconds
-[-] toml 0.10.0              [░░░░░░░░░░░░░░░░░] 17.811 seconds
-[-] ruamel.yaml 0.15.92      [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 31.981 seconds
-[-] qtoml 0.2.4              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 37.508 seconds
+[-] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓] 9.722 seconds
+[-] pyyaml (CLoader) 6.0     [░░░░░░░░░░░░] 12.872 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 18.011 seconds
+[-] toml 0.10.2              [░░░░░░░░░░░░░░░░░░░░] 20.201 seconds
+[-] qtoml 0.3.1              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 31.738 seconds
+[-] ruamel.yaml 0.17.21      [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 31.934 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] tomlkit 0.5.3            2+ minutes
-[-] pyyaml (FullLoader) 5.1  2+ minutes
+[-] pyyaml (FullLoader) 6.0  2+ minutes
+[-] tomlkit 0.10.2           3+ minutes
 ```
 
 #### *content_heavy*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓▓▓▓▓] 8.017 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓] 9.285 seconds
-[-] pyyaml (CLoader) 5.1     [░░░░░░░░░░░░] 12.360 seconds
-[-] ruamel.yaml 0.15.92      [░░░░░░░░░░░░░░░░░░░░░] 21.099 seconds
+[-] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓] 9.377 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓] 10.980 seconds
+[-] pyyaml (CLoader) 6.0     [░░░░░░░░░░░] 11.789 seconds
+[-] ruamel.yaml 0.17.21      [░░░░░░░░░░░░░░░░░░░░] 20.965 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] toml 0.10.0              9+ minutes
-[-] qtoml 0.2.4              10+ minutes
-[-] pyyaml (FullLoader) 5.1  17+ minutes
-[-] tomlkit 0.5.3            91+ minutes
+[-] toml 0.10.2              9+ minutes
+[-] qtoml 0.3.1              11+ minutes
+[-] pyyaml (FullLoader) 6.0  17+ minutes
+[-] tomlkit 0.10.2           101+ minutes
 ```
 
 #### *invented_server_configuration*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓▓▓▓▓] 8.175 seconds
-[-] pyyaml (CLoader) 5.1     [░░░░░░░░░░░░░] 13.955 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 21.709 seconds
-[-] toml 0.10.0              [░░░░░░░░░░░░░░░░░░░░░░░░░░] 26.189 seconds
-[-] ruamel.yaml 0.15.92      [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 32.207 seconds
-[-] qtoml 0.2.4              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 53.372 seconds
+[-] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓] 9.745 seconds
+[-] pyyaml (CLoader) 6.0     [░░░░░░░░░░░░░] 13.371 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 23.574 seconds
+[-] toml 0.10.2              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 30.444 seconds
+[-] ruamel.yaml 0.17.21      [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 32.375 seconds
+[-] qtoml 0.3.1              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 49.098 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] pyyaml (FullLoader) 5.1  2+ minutes
-[-] tomlkit 0.5.3            5+ minutes
+[-] pyyaml (FullLoader) 6.0  2+ minutes
+[-] tomlkit 0.10.2           5+ minutes
 ```
 
 #### *jekyll_post_example*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓] 3.752 seconds
-[-] pyyaml (CLoader) 5.1     [░░░░░] 5.613 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓] 9.796 seconds
-[-] ruamel.yaml 0.15.92      [░░░░░░░░░░░░░░░░] 16.460 seconds
-[-] toml 0.10.0              [░░░░░░░░░░░░░░░░░░░░░░] 22.921 seconds
-[-] qtoml 0.2.4              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 30.146 seconds
+[-] enolib 0.8.1             [▓▓▓▓] 4.358 seconds
+[-] pyyaml (CLoader) 6.0     [░░░░░] 5.185 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓] 10.486 seconds
+[-] ruamel.yaml 0.17.21      [░░░░░░░░░░░░░░░] 15.789 seconds
+[-] toml 0.10.2              [░░░░░░░░░░░░░░░░░░░░░░░░░] 25.397 seconds
+[-] qtoml 0.3.1              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 28.791 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] pyyaml (FullLoader) 5.1  1+ minutes
-[-] tomlkit 0.5.3            3+ minutes
+[-] pyyaml (FullLoader) 6.0  1+ minutes
+[-] tomlkit 0.10.2           3+ minutes
 ```
 
 #### *journey_route_data*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 17.609 seconds
-[-] pyyaml (CLoader) 5.1     [░░░░░░░░░░░░░░░░░░░░░░░░░░░] 27.608 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 33.668 seconds
-[-] toml 0.10.0              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 43.380 seconds
-[-] ruamel.yaml 0.15.92      [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 58.859 seconds
+[-] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 22.366 seconds
+[-] pyyaml (CLoader) 6.0     [░░░░░░░░░░░░░░░░░░░░░░░░░] 25.494 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 38.252 seconds
+[-] toml 0.10.2              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 48.619 seconds
+[-] ruamel.yaml 0.17.21      [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 57.387 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] qtoml 0.2.4              1+ minutes
-[-] pyyaml (FullLoader) 5.1  5+ minutes
-[-] tomlkit 0.5.3            6+ minutes
+[-] qtoml 0.3.1              1+ minutes
+[-] pyyaml (FullLoader) 6.0  4+ minutes
+[-] tomlkit 0.10.2           6+ minutes
 ```
 
 #### *yaml_invoice_example*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 14.489 seconds
-[-] pyyaml (CLoader) 5.1     [░░░░░░░░░░░░░░░░░░░░] 20.087 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 29.295 seconds
-[-] toml 0.10.0              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 33.046 seconds
-[-] ruamel.yaml 0.15.92      [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 47.331 seconds
+[-] pyyaml (CLoader) 6.0     [░░░░░░░░░░░░░░░░░░░] 19.352 seconds
+[-] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 20.276 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 35.178 seconds
+[-] toml 0.10.2              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 37.578 seconds
+[-] ruamel.yaml 0.17.21      [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 46.486 seconds
+[-] qtoml 0.3.1              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 56.400 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] qtoml 0.2.4              1+ minutes
-[-] pyyaml (FullLoader) 5.1  3+ minutes
-[-] tomlkit 0.5.3            5+ minutes
+[-] pyyaml (FullLoader) 6.0  3+ minutes
+[-] tomlkit 0.10.2           5+ minutes
 ```
 
 ### Ruby
 
-Evaluated in **ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]** on **April 21st 2019**.
+Evaluated in **ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-linux]** on **April 30, 2022**.
 
 #### *abstract_hierarchy*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓▓] 5.852 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓] 10.165 seconds
-[-] yaml 2.6.3               [░░░░░░░░░░░░] 12.624 seconds
-[-] tomlrb 1.2.8             [░░░░░░░░░░░░░░░░░░] 18.984 seconds
+[-] enolib 0.8.1             [▓▓▓▓▓▓] 6.566 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓] 11.042 seconds
+[-] yaml 3.0.0               [░░░░░░░░░░░] 11.542 seconds
+[-] tomlrb 2.0.1             [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 33.200 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] toml-rb 1.1.2            4+ minutes
-[-] toml 0.2.0               7+ minutes
+[-] toml-rb 2.1.2            6+ minutes
+[-] toml 0.3.0               8+ minutes
 ```
 
 #### *content_heavy*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓▓] 5.774 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓] 6.864 seconds
-[-] yaml 2.6.3               [░░░░░░░░░░░░░] 13.161 seconds
-[-] tomlrb 1.2.8             [░░░░░░░░░░░░░░░░░░░░] 20.412 seconds
+[-] enolib 0.8.1             [▓▓▓▓▓] 5.882 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓] 7.130 seconds
+[-] yaml 3.0.0               [░░░░░░░░░░░░] 12.834 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] toml-rb 1.1.2            39+ minutes
+[-] tomlrb 2.0.1             1+ minutes
+[-] toml-rb 2.1.2            42+ minutes
 ```
 
 #### *invented_server_configuration*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓▓] 5.961 seconds
-[-] yaml 2.6.3               [░░░░░░░░░░░░] 12.944 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓▓] 13.624 seconds
-[-] tomlrb 1.2.8             [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 32.959 seconds
+[-] enolib 0.8.1             [▓▓▓▓▓▓] 6.806 seconds
+[-] yaml 3.0.0               [░░░░░░░░░░░░] 12.082 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 15.213 seconds
+[-] tomlrb 2.0.1             [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 58.850 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] toml-rb 1.1.2            8+ minutes
-[-] toml 0.2.0               11+ minutes
+[-] toml-rb 2.1.2            10+ minutes
+[-] toml 0.3.0               14+ minutes
 ```
 
 #### *jekyll_post_example*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓] 4.970 seconds
-[-] tomlrb 1.2.8             [░░░░░] 5.618 seconds
-[-] yaml 2.6.3               [░░░░░░░] 7.047 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓] 7.779 seconds
-
-...  ...                     OFF THE SCALE
-
-[-] toml-rb 1.1.2            3+ minutes
+[-] enolib 0.8.1             [▓▓▓▓▓] 5.189 seconds
+[-] yaml 3.0.0               [░░░░░░░] 7.283 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓] 8.222 seconds
+[-] tomlrb 2.0.1             [░░░░░░░░░░░] 11.753 seconds
 ```
 
 #### *journey_route_data*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓] 12.539 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 21.619 seconds
-[-] yaml 2.6.3               [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 30.278 seconds
-[-] tomlrb 1.2.8             [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 32.343 seconds
+[-] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 14.216 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 23.535 seconds
+[-] yaml 3.0.0               [░░░░░░░░░░░░░░░░░░░░░░░░░] 25.262 seconds
 
 ...  ...                     OFF THE SCALE
 
-[-] toml-rb 1.1.2            8+ minutes
-[-] toml 0.2.0               15+ minutes
+[-] tomlrb 2.0.1             1+ minutes
+[-] toml 0.3.0               18+ minutes
 ```
 
 #### *yaml_invoice_example*
 
 &nbsp;  
 ```
-VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
+VAL LIBRARY                  NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
-[-] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓▓] 13.409 seconds
-[-] yaml 2.6.3               [░░░░░░░░░░░░░░░░░░░░░] 21.778 seconds
-[✓] enolib 0.5.0             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 23.270 seconds
-[-] tomlrb 1.2.8             [░░░░░░░░░░░░░░░░░░░░░░░░░░░] 27.707 seconds
-
-...  ...                     OFF THE SCALE
-
-[-] toml-rb 1.1.2            9+ minutes
+[-] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 17.903 seconds
+[-] yaml 3.0.0               [░░░░░░░░░░░░░░░░░░] 18.520 seconds
+[✓] enolib 0.8.1             [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 28.548 seconds
+[-] tomlrb 2.0.1             [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 53.659 seconds
 ```
 
 ## Numerical results
@@ -357,216 +347,213 @@ VAL LIBRARY               NUMBER OF SECONDS FOR 100K (***) ITERATIONS
 
 ### JavaScript
 
-Evaluated in **node v11.14.0 [linux-x64]** on **April 21st 2019**.
+Evaluated in **node v16.14.2 [linux-x64]** on **April 29, 2022**.
 
 #### *abstract_hierarchy*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **1.072** |
-| **[✓] enolib 0.5.0** | **1.697** |
-| [-] js-yaml 3.13.1 | 1.764 |
-| [-] toml-j0.4 1.1.1 | 6.425 |
-| [-] toml 3.0.0 | 79.103 |
+| **[-] enolib (git)** | **0.991** |
+| **[✓] enolib (git)** | **1.355** |
+| [-] js-yaml 4.1.0 | 2.113 |
+| [-] toml-j0.4 1.1.1 | 5.836 |
+| [-] toml 3.0.0 | 86.159 |
 
 #### *content_heavy*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **0.677** |
-| **[✓] enolib 0.5.0** | **0.796** |
-| [-] js-yaml 3.13.1 | 7.679 |
-| [-] toml-j0.4 1.1.1 | 325.046 |
-| [-] toml 3.0.0 | 10243.735 |
+| **[✓] enolib (git)** | **0.621** |
+| **[-] enolib (git)** | **0.653** |
+| [-] js-yaml 4.1.0 | 8.989 |
+| [-] toml-j0.4 1.1.1 | 322.459 |
+| [-] toml 3.0.0 | 9945.710 |
 
 #### *invented_server_configuration*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **1.210** |
-| [-] js-yaml 3.13.1 | 1.759 |
-| **[✓] enolib 0.5.0** | **2.271** |
-| [-] toml-j0.4 1.1.1 | 9.804 |
-| [-] toml 3.0.0 | 127.792 |
+| **[-] enolib (git)** | **0.862** |
+| **[✓] enolib (git)** | **1.232** |
+| [-] js-yaml 4.1.0 | 2.478 |
+| [-] toml-j0.4 1.1.1 | 8.671 |
+| [-] toml 3.0.0 | 155.783 |
 
 #### *jekyll_post_example*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **0.598** |
-| [-] js-yaml 3.13.1 | 0.920 |
-| **[✓] enolib 0.5.0** | **1.055** |
-| [-] toml-j0.4 1.1.1 | 11.599 |
-| [-] toml 3.0.0 | 191.061 |
+| **[-] enolib (git)** | **0.516** |
+| **[✓] enolib (git)** | **0.746** |
+| [-] js-yaml 4.1.0 | 1.068 |
+| [-] toml-j0.4 1.1.1 | 11.397 |
+| [-] toml 3.0.0 | 204.921 |
 
 #### *journey_route_data*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **2.381** |
-| [-] js-yaml 3.13.1 | 4.025 |
-| **[✓] enolib 0.5.0** | **4.084** |
-| [-] toml-j0.4 1.1.1 | 16.047 |
-| [-] toml 3.0.0 | 115.412 |
+| **[-] enolib (git)** | **2.375** |
+| **[✓] enolib (git)** | **3.490** |
+| [-] js-yaml 4.1.0 | 4.431 |
+| [-] toml-j0.4 1.1.1 | 13.878 |
+| [-] toml 3.0.0 | 132.145 |
 
 #### *yaml_invoice_example*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **2.160** |
-| [-] js-yaml 3.13.1 | 2.933 |
-| **[✓] enolib 0.5.0** | **3.881** |
-| [-] toml-j0.4 1.1.1 | 12.719 |
-| [-] toml 3.0.0 | 63.191 |
+| **[-] enolib (git)** | **2.071** |
+| [-] js-yaml 4.1.0 | 3.144 |
+| **[✓] enolib (git)** | **3.323** |
+| [-] toml-j0.4 1.1.1 | 11.032 |
+| [-] toml 3.0.0 | 75.226 |
 
 ### Python
 
-Evaluated in **CPython 3.7.3 [Linux-5.0.0-13-generic-x86_64-with-Ubuntu-19.04-disco]** on **April 21st 2019**.
+Evaluated in **CPython 3.10.4 [Linux-5.17.4-arch1-1-x86_64-with-glibc2.35]** on **April 29, 2022**.
 
 #### *abstract_hierarchy*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **8.152** |
-| [-] pyyaml (CLoader) 5.1 | 13.295 |
-| **[✓] enolib 0.5.0** | **15.576** |
-| [-] toml 0.10.0 | 17.811 |
-| [-] ruamel.yaml 0.15.92 | 31.981 |
-| [-] qtoml 0.2.4 | 37.508 |
-| [-] tomlkit 0.5.3 | 136.390 |
-| [-] pyyaml (FullLoader) 5.1 | 141.798 |
+| **[-] enolib 0.8.1** | **9.722** |
+| [-] pyyaml (CLoader) 6.0 | 12.872 |
+| **[✓] enolib 0.8.1** | **18.011** |
+| [-] toml 0.10.2 | 20.201 |
+| [-] qtoml 0.3.1 | 31.738 |
+| [-] ruamel.yaml 0.17.21 | 31.934 |
+| [-] pyyaml (FullLoader) 6.0 | 128.326 |
+| [-] tomlkit 0.10.2 | 150.259 |
 
 #### *content_heavy*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **8.017** |
-| **[✓] enolib 0.5.0** | **9.285** |
-| [-] pyyaml (CLoader) 5.1 | 12.360 |
-| [-] ruamel.yaml 0.15.92 | 21.099 |
-| [-] toml 0.10.0 | 521.554 |
-| [-] qtoml 0.2.4 | 607.126 |
-| [-] pyyaml (FullLoader) 5.1 | 1010.192 |
-| [-] tomlkit 0.5.3 | 5483.473 |
+| **[-] enolib 0.8.1** | **9.377** |
+| **[✓] enolib 0.8.1** | **10.980** |
+| [-] pyyaml (CLoader) 6.0 | 11.789 |
+| [-] ruamel.yaml 0.17.21 | 20.965 |
+| [-] toml 0.10.2 | 567.749 |
+| [-] qtoml 0.3.1 | 632.328 |
+| [-] pyyaml (FullLoader) 6.0 | 1016.106 |
+| [-] tomlkit 0.10.2 | 6078.838 |
 
 #### *invented_server_configuration*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **8.175** |
-| [-] pyyaml (CLoader) 5.1 | 13.955 |
-| **[✓] enolib 0.5.0** | **21.709** |
-| [-] toml 0.10.0 | 26.189 |
-| [-] ruamel.yaml 0.15.92 | 32.207 |
-| [-] qtoml 0.2.4 | 53.372 |
-| [-] pyyaml (FullLoader) 5.1 | 140.939 |
-| [-] tomlkit 0.5.3 | 295.773 |
+| **[-] enolib 0.8.1** | **9.745** |
+| [-] pyyaml (CLoader) 6.0 | 13.371 |
+| **[✓] enolib 0.8.1** | **23.574** |
+| [-] toml 0.10.2 | 30.444 |
+| [-] ruamel.yaml 0.17.21 | 32.375 |
+| [-] qtoml 0.3.1 | 49.098 |
+| [-] pyyaml (FullLoader) 6.0 | 128.064 |
+| [-] tomlkit 0.10.2 | 275.489 |
 
 #### *jekyll_post_example*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **3.752** |
-| [-] pyyaml (CLoader) 5.1 | 5.613 |
-| **[✓] enolib 0.5.0** | **9.796** |
-| [-] ruamel.yaml 0.15.92 | 16.460 |
-| [-] toml 0.10.0 | 22.921 |
-| [-] qtoml 0.2.4 | 30.146 |
-| [-] pyyaml (FullLoader) 5.1 | 75.435 |
-| [-] tomlkit 0.5.3 | 177.148 |
+| **[-] enolib 0.8.1** | **4.358** |
+| [-] pyyaml (CLoader) 6.0 | 5.185 |
+| **[✓] enolib 0.8.1** | **10.486** |
+| [-] ruamel.yaml 0.17.21 | 15.789 |
+| [-] toml 0.10.2 | 25.397 |
+| [-] qtoml 0.3.1 | 28.791 |
+| [-] pyyaml (FullLoader) 6.0 | 69.788 |
+| [-] tomlkit 0.10.2 | 196.152 |
 
 #### *journey_route_data*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **17.609** |
-| [-] pyyaml (CLoader) 5.1 | 27.608 |
-| **[✓] enolib 0.5.0** | **33.668** |
-| [-] toml 0.10.0 | 43.380 |
-| [-] ruamel.yaml 0.15.92 | 58.859 |
-| [-] qtoml 0.2.4 | 83.912 |
-| [-] pyyaml (FullLoader) 5.1 | 293.306 |
-| [-] tomlkit 0.5.3 | 380.463 |
+| **[-] enolib 0.8.1** | **22.366** |
+| [-] pyyaml (CLoader) 6.0 | 25.494 |
+| **[✓] enolib 0.8.1** | **38.252** |
+| [-] toml 0.10.2 | 48.619 |
+| [-] ruamel.yaml 0.17.21 | 57.387 |
+| [-] qtoml 0.3.1 | 72.072 |
+| [-] pyyaml (FullLoader) 6.0 | 262.894 |
+| [-] tomlkit 0.10.2 | 383.605 |
 
 #### *yaml_invoice_example*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **14.489** |
-| [-] pyyaml (CLoader) 5.1 | 20.087 |
-| **[✓] enolib 0.5.0** | **29.295** |
-| [-] toml 0.10.0 | 33.046 |
-| [-] ruamel.yaml 0.15.92 | 47.331 |
-| [-] qtoml 0.2.4 | 63.233 |
-| [-] pyyaml (FullLoader) 5.1 | 205.240 |
-| [-] tomlkit 0.5.3 | 281.423 |
+| [-] pyyaml (CLoader) 6.0 | 19.352 |
+| **[-] enolib 0.8.1** | **20.276** |
+| **[✓] enolib 0.8.1** | **35.178** |
+| [-] toml 0.10.2 | 37.578 |
+| [-] ruamel.yaml 0.17.21 | 46.486 |
+| [-] qtoml 0.3.1 | 56.400 |
+| [-] pyyaml (FullLoader) 6.0 | 186.652 |
+| [-] tomlkit 0.10.2 | 305.260 |
 
 ### Ruby
 
-Evaluated in **ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]** on **April 21st 2019**.
+Evaluated in **ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-linux]** on **April 30, 2022**.
 
 #### *abstract_hierarchy*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **5.852** |
-| **[✓] enolib 0.5.0** | **10.165** |
-| [-] yaml 2.6.3 | 12.624 |
-| [-] tomlrb 1.2.8 | 18.984 |
-| [-] toml-rb 1.1.2 | 258.676 |
-| [-] toml 0.2.0 | 396.678 |
+| **[-] enolib 0.8.1** | **6.566** |
+| **[✓] enolib 0.8.1** | **11.042** |
+| [-] yaml 3.0.0 | 11.542 |
+| [-] tomlrb 2.0.1 | 33.200 |
+| [-] toml-rb 2.1.2 | 370.530 |
+| [-] toml 0.3.0 | 501.418 |
 
 #### *content_heavy*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **5.774** |
-| **[✓] enolib 0.5.0** | **6.864** |
-| [-] yaml 2.6.3 | 13.161 |
-| [-] tomlrb 1.2.8 | 20.412 |
-| [-] toml-rb 1.1.2 | 2348.184 |
+| **[-] enolib 0.8.1** | **5.882** |
+| **[✓] enolib 0.8.1** | **7.130** |
+| [-] yaml 3.0.0 | 12.834 |
+| [-] tomlrb 2.0.1 | 61.495 |
+| [-] toml-rb 2.1.2 | 2508.009 |
 
 #### *invented_server_configuration*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **5.961** |
-| [-] yaml 2.6.3 | 12.944 |
-| **[✓] enolib 0.5.0** | **13.624** |
-| [-] tomlrb 1.2.8 | 32.959 |
-| [-] toml-rb 1.1.2 | 464.022 |
-| [-] toml 0.2.0 | 680.482 |
+| **[-] enolib 0.8.1** | **6.806** |
+| [-] yaml 3.0.0 | 12.082 |
+| **[✓] enolib 0.8.1** | **15.213** |
+| [-] tomlrb 2.0.1 | 58.850 |
+| [-] toml-rb 2.1.2 | 623.452 |
+| [-] toml 0.3.0 | 828.296 |
 
 #### *jekyll_post_example*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **4.970** |
-| [-] tomlrb 1.2.8 | 5.618 |
-| [-] yaml 2.6.3 | 7.047 |
-| **[✓] enolib 0.5.0** | **7.779** |
-| [-] toml-rb 1.1.2 | 153.972 |
+| **[-] enolib 0.8.1** | **5.189** |
+| [-] yaml 3.0.0 | 7.283 |
+| **[✓] enolib 0.8.1** | **8.222** |
+| [-] tomlrb 2.0.1 | 11.753 |
 
 #### *journey_route_data*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **12.539** |
-| **[✓] enolib 0.5.0** | **21.619** |
-| [-] yaml 2.6.3 | 30.278 |
-| [-] tomlrb 1.2.8 | 32.343 |
-| [-] toml-rb 1.1.2 | 488.594 |
-| [-] toml 0.2.0 | 923.540 |
+| **[-] enolib 0.8.1** | **14.216** |
+| **[✓] enolib 0.8.1** | **23.535** |
+| [-] yaml 3.0.0 | 25.262 |
+| [-] tomlrb 2.0.1 | 61.633 |
+| [-] toml 0.3.0 | 1098.928 |
 
 #### *yaml_invoice_example*
 
 | Library | Number of seconds for 100k (***) iterations |
 | ------- | ------------------------------------- |
-| **[-] enolib 0.5.0** | **13.409** |
-| [-] yaml 2.6.3 | 21.778 |
-| **[✓] enolib 0.5.0** | **23.270** |
-| [-] tomlrb 1.2.8 | 27.707 |
-| [-] toml-rb 1.1.2 | 539.664 |
+| **[-] enolib 0.8.1** | **17.903** |
+| [-] yaml 3.0.0 | 18.520 |
+| **[✓] enolib 0.8.1** | **28.548** |
+| [-] tomlrb 2.0.1 | 53.659 |
 
 ---
 
@@ -577,6 +564,11 @@ To see how the report was compiled, please study `report.js` inside this reposit
 
 
 ## Notes
+
+As you might have noticed, the benchmark figures for ruby are occasionally
+missing one or two libraries for specific benchmarks – the reason for this is
+simply that these libraries failed on those respective benchmarks, either by
+raising an error or even by segfaulting.
 
 **(\*)**: The majority of YAML/TOML parsers produce plain object dumps which are inherently unvalidated.
 
